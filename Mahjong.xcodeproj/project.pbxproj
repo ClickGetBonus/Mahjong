@@ -1,0 +1,539 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		841B69581EA8AD5F0096DA0F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 841B69571EA8AD5F0096DA0F /* main.m */; };
+		841B695B1EA8AD5F0096DA0F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 841B695A1EA8AD5F0096DA0F /* AppDelegate.m */; };
+		841B695E1EA8AD5F0096DA0F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 841B695D1EA8AD5F0096DA0F /* ViewController.m */; };
+		841B69611EA8AD5F0096DA0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841B695F1EA8AD5F0096DA0F /* Main.storyboard */; };
+		841B69631EA8AD5F0096DA0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841B69621EA8AD5F0096DA0F /* Assets.xcassets */; };
+		841B69661EA8AD5F0096DA0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841B69641EA8AD5F0096DA0F /* LaunchScreen.storyboard */; };
+		841B69711EA8AD5F0096DA0F /* MahjongTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 841B69701EA8AD5F0096DA0F /* MahjongTests.m */; };
+		841B697C1EA8AD5F0096DA0F /* MahjongUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 841B697B1EA8AD5F0096DA0F /* MahjongUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		841B696D1EA8AD5F0096DA0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 841B694B1EA8AD5F0096DA0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 841B69521EA8AD5F0096DA0F;
+			remoteInfo = Mahjong;
+		};
+		841B69781EA8AD5F0096DA0F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 841B694B1EA8AD5F0096DA0F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 841B69521EA8AD5F0096DA0F;
+			remoteInfo = Mahjong;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		841B69531EA8AD5F0096DA0F /* Mahjong.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mahjong.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		841B69571EA8AD5F0096DA0F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		841B69591EA8AD5F0096DA0F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		841B695A1EA8AD5F0096DA0F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		841B695C1EA8AD5F0096DA0F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		841B695D1EA8AD5F0096DA0F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		841B69601EA8AD5F0096DA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		841B69621EA8AD5F0096DA0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		841B69651EA8AD5F0096DA0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		841B69671EA8AD5F0096DA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		841B696C1EA8AD5F0096DA0F /* MahjongTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MahjongTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		841B69701EA8AD5F0096DA0F /* MahjongTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MahjongTests.m; sourceTree = "<group>"; };
+		841B69721EA8AD5F0096DA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		841B69771EA8AD5F0096DA0F /* MahjongUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MahjongUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		841B697B1EA8AD5F0096DA0F /* MahjongUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MahjongUITests.m; sourceTree = "<group>"; };
+		841B697D1EA8AD5F0096DA0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		841B69501EA8AD5F0096DA0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B69691EA8AD5F0096DA0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B69741EA8AD5F0096DA0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		841B694A1EA8AD5F0096DA0F = {
+			isa = PBXGroup;
+			children = (
+				841B69551EA8AD5F0096DA0F /* Mahjong */,
+				841B696F1EA8AD5F0096DA0F /* MahjongTests */,
+				841B697A1EA8AD5F0096DA0F /* MahjongUITests */,
+				841B69541EA8AD5F0096DA0F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		841B69541EA8AD5F0096DA0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				841B69531EA8AD5F0096DA0F /* Mahjong.app */,
+				841B696C1EA8AD5F0096DA0F /* MahjongTests.xctest */,
+				841B69771EA8AD5F0096DA0F /* MahjongUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		841B69551EA8AD5F0096DA0F /* Mahjong */ = {
+			isa = PBXGroup;
+			children = (
+				841B69591EA8AD5F0096DA0F /* AppDelegate.h */,
+				841B695A1EA8AD5F0096DA0F /* AppDelegate.m */,
+				841B695C1EA8AD5F0096DA0F /* ViewController.h */,
+				841B695D1EA8AD5F0096DA0F /* ViewController.m */,
+				841B695F1EA8AD5F0096DA0F /* Main.storyboard */,
+				841B69621EA8AD5F0096DA0F /* Assets.xcassets */,
+				841B69641EA8AD5F0096DA0F /* LaunchScreen.storyboard */,
+				841B69671EA8AD5F0096DA0F /* Info.plist */,
+				841B69561EA8AD5F0096DA0F /* Supporting Files */,
+			);
+			path = Mahjong;
+			sourceTree = "<group>";
+		};
+		841B69561EA8AD5F0096DA0F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				841B69571EA8AD5F0096DA0F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		841B696F1EA8AD5F0096DA0F /* MahjongTests */ = {
+			isa = PBXGroup;
+			children = (
+				841B69701EA8AD5F0096DA0F /* MahjongTests.m */,
+				841B69721EA8AD5F0096DA0F /* Info.plist */,
+			);
+			path = MahjongTests;
+			sourceTree = "<group>";
+		};
+		841B697A1EA8AD5F0096DA0F /* MahjongUITests */ = {
+			isa = PBXGroup;
+			children = (
+				841B697B1EA8AD5F0096DA0F /* MahjongUITests.m */,
+				841B697D1EA8AD5F0096DA0F /* Info.plist */,
+			);
+			path = MahjongUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		841B69521EA8AD5F0096DA0F /* Mahjong */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 841B69801EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "Mahjong" */;
+			buildPhases = (
+				841B694F1EA8AD5F0096DA0F /* Sources */,
+				841B69501EA8AD5F0096DA0F /* Frameworks */,
+				841B69511EA8AD5F0096DA0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mahjong;
+			productName = Mahjong;
+			productReference = 841B69531EA8AD5F0096DA0F /* Mahjong.app */;
+			productType = "com.apple.product-type.application";
+		};
+		841B696B1EA8AD5F0096DA0F /* MahjongTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 841B69831EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "MahjongTests" */;
+			buildPhases = (
+				841B69681EA8AD5F0096DA0F /* Sources */,
+				841B69691EA8AD5F0096DA0F /* Frameworks */,
+				841B696A1EA8AD5F0096DA0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				841B696E1EA8AD5F0096DA0F /* PBXTargetDependency */,
+			);
+			name = MahjongTests;
+			productName = MahjongTests;
+			productReference = 841B696C1EA8AD5F0096DA0F /* MahjongTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		841B69761EA8AD5F0096DA0F /* MahjongUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 841B69861EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "MahjongUITests" */;
+			buildPhases = (
+				841B69731EA8AD5F0096DA0F /* Sources */,
+				841B69741EA8AD5F0096DA0F /* Frameworks */,
+				841B69751EA8AD5F0096DA0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				841B69791EA8AD5F0096DA0F /* PBXTargetDependency */,
+			);
+			name = MahjongUITests;
+			productName = MahjongUITests;
+			productReference = 841B69771EA8AD5F0096DA0F /* MahjongUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		841B694B1EA8AD5F0096DA0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = admin;
+				TargetAttributes = {
+					841B69521EA8AD5F0096DA0F = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = PCDRA9FBT5;
+						ProvisioningStyle = Automatic;
+					};
+					841B696B1EA8AD5F0096DA0F = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = PCDRA9FBT5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 841B69521EA8AD5F0096DA0F;
+					};
+					841B69761EA8AD5F0096DA0F = {
+						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = PCDRA9FBT5;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 841B69521EA8AD5F0096DA0F;
+					};
+				};
+			};
+			buildConfigurationList = 841B694E1EA8AD5F0096DA0F /* Build configuration list for PBXProject "Mahjong" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 841B694A1EA8AD5F0096DA0F;
+			productRefGroup = 841B69541EA8AD5F0096DA0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				841B69521EA8AD5F0096DA0F /* Mahjong */,
+				841B696B1EA8AD5F0096DA0F /* MahjongTests */,
+				841B69761EA8AD5F0096DA0F /* MahjongUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		841B69511EA8AD5F0096DA0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841B69661EA8AD5F0096DA0F /* LaunchScreen.storyboard in Resources */,
+				841B69631EA8AD5F0096DA0F /* Assets.xcassets in Resources */,
+				841B69611EA8AD5F0096DA0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B696A1EA8AD5F0096DA0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B69751EA8AD5F0096DA0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		841B694F1EA8AD5F0096DA0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841B695E1EA8AD5F0096DA0F /* ViewController.m in Sources */,
+				841B695B1EA8AD5F0096DA0F /* AppDelegate.m in Sources */,
+				841B69581EA8AD5F0096DA0F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B69681EA8AD5F0096DA0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841B69711EA8AD5F0096DA0F /* MahjongTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		841B69731EA8AD5F0096DA0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				841B697C1EA8AD5F0096DA0F /* MahjongUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		841B696E1EA8AD5F0096DA0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 841B69521EA8AD5F0096DA0F /* Mahjong */;
+			targetProxy = 841B696D1EA8AD5F0096DA0F /* PBXContainerItemProxy */;
+		};
+		841B69791EA8AD5F0096DA0F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 841B69521EA8AD5F0096DA0F /* Mahjong */;
+			targetProxy = 841B69781EA8AD5F0096DA0F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		841B695F1EA8AD5F0096DA0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				841B69601EA8AD5F0096DA0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		841B69641EA8AD5F0096DA0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				841B69651EA8AD5F0096DA0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		841B697E1EA8AD5F0096DA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		841B697F1EA8AD5F0096DA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		841B69811EA8AD5F0096DA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = Mahjong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.Mahjong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		841B69821EA8AD5F0096DA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = Mahjong/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.Mahjong;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		841B69841EA8AD5F0096DA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = MahjongTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.MahjongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mahjong.app/Mahjong";
+			};
+			name = Debug;
+		};
+		841B69851EA8AD5F0096DA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = MahjongTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.MahjongTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Mahjong.app/Mahjong";
+			};
+			name = Release;
+		};
+		841B69871EA8AD5F0096DA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = MahjongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.MahjongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Mahjong;
+			};
+			name = Debug;
+		};
+		841B69881EA8AD5F0096DA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = PCDRA9FBT5;
+				INFOPLIST_FILE = MahjongUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.condenast.com.cn.MahjongUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Mahjong;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		841B694E1EA8AD5F0096DA0F /* Build configuration list for PBXProject "Mahjong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841B697E1EA8AD5F0096DA0F /* Debug */,
+				841B697F1EA8AD5F0096DA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		841B69801EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "Mahjong" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841B69811EA8AD5F0096DA0F /* Debug */,
+				841B69821EA8AD5F0096DA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		841B69831EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "MahjongTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841B69841EA8AD5F0096DA0F /* Debug */,
+				841B69851EA8AD5F0096DA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		841B69861EA8AD5F0096DA0F /* Build configuration list for PBXNativeTarget "MahjongUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				841B69871EA8AD5F0096DA0F /* Debug */,
+				841B69881EA8AD5F0096DA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 841B694B1EA8AD5F0096DA0F /* Project object */;
+}
