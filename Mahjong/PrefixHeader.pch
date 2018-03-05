@@ -1,0 +1,38 @@
+//
+//  PrefixHeader.pch
+//  Mahjong
+//
+//  Created by 贾卓峰 on 2017/4/20.
+//  Copyright © 2017年 admin. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "AFNetworking.h"
+#import "SVProgressHUD.h"
+#import "IQKeyboardManager.h"
+#import "SVProgressHUD+MYProgressHUD.h"
+
+#define KScreenWidth      [UIScreen mainScreen].bounds.size.width
+#define KScreenHeight      [UIScreen mainScreen].bounds.size.height
+#define UIColorRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+#define Iphone5s  [UIScreen mainScreen].bounds.size.width < 370
+
+#define Iphone6   ([UIScreen mainScreen].bounds.size.width > 320 || [UIScreen mainScreen].bounds.size.width < 400 )
+
+
+#define  ShuoMingMessage @"请先启动游戏，然后切换出来启动软件，一定要进入游戏再按启动功能，自摸机率与好牌机率不要调的太高，建议各50%"
+/*
+ 注册码名称
+ 1F4AF2947D4B37C17FB57248A99B8209
+ 42B45C586E054A63F569AC6513D7B637
+ B599CCA9B1BB9289482E9939062C5BDD
+ */
+
+#define baseUrl  @"http://get.baibaoyun.com/api/72b26e8eb10cc6212a3fc254bd5206cc"
+#define AudioType  @"MP3"
+
+
+#endif /* PrefixHeader_pch */

@@ -1,0 +1,503 @@
+//
+//  NewSecondDetailViewController.m
+//  Mahjong
+//
+//  Created by 贾卓峰 on 2017/4/22.
+//  Copyright © 2017年 admin. All rights reserved.
+//
+
+#import "NewSecondDetailViewController.h"
+#import <AVFoundation/AVFoundation.h>
+#import "NSString+Tools.h"
+#import "UIScrollView+GQScrollView.h"
+#import "STPickerSingle.h"
+
+
+typedef void(^LexiSuccessBlock)(id respose);
+@interface NewSecondDetailViewController ()<STPickerSingleDelegate>
+
+@property (nonatomic,strong)AVAudioPlayer  * thePlayer;
+// 启动游戏
+@property (weak, nonatomic) IBOutlet UIButton *starButton;
+//选择类型
+@property (weak, nonatomic) IBOutlet UIButton *typeButton;
+//好牌几率
+@property (weak, nonatomic) IBOutlet UIButton *goodsPersentButton;
+//起手牌型
+@property (weak, nonatomic) IBOutlet UIButton *startCardTypeButton;
+
+//跑的快
+@property (weak, nonatomic) IBOutlet UIButton *runFastButton;
+//跑胡子
+@property (weak, nonatomic) IBOutlet UIButton *runBeardButton;
+
+/// 顶部选择类型
+@property (nonatomic, strong) STPickerSingle *pickerCla;
+/// 底部选择类型
+@property (nonatomic, strong) STPickerSingle *pickerNum;
+/// 选择起手牌型
+@property (nonatomic, strong) STPickerSingle *pickerGood;
+
+/// 跑的快
+@property (nonatomic, strong) STPickerSingle *pickerFast;
+/// 跑胡子
+@property (nonatomic, strong) STPickerSingle *pickerBread;
+
+@property(nonatomic,assign)BOOL isSuccess;// 是否授权成功
+
+
+
+
+@property (weak, nonatomic) IBOutlet UITextField *codeTextField;
+
+@end
+
+@implementation NewSecondDetailViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSLog(@"%@",self.myDataDic);
+    [self.typeButton setTitle:[self.myDataDic[@"list"] firstObject] forState:UIControlStateNormal];
+    self.title =  self.myDataDic[@"name"];
+    [self configureViews];
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(playMusic) object:nil];
+}
+
+
+-(void)configureViews{
+    
+    
+    self.starButton.layer.cornerRadius  = 6;
+    self.starButton.layer.borderWidth = 2;
+    self.starButton.layer.borderColor = UIColorRGB(0x3b6daa).CGColor;
+    
+    self.typeButton.layer.cornerRadius = 3;
+    self.typeButton.layer.borderWidth = 0.5;
+    self.typeButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.typeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.typeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.goodsPersentButton.layer.cornerRadius = 3;
+    self.goodsPersentButton.layer.borderWidth = 0.5;
+    self.goodsPersentButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.goodsPersentButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.goodsPersentButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    
+    self.startCardTypeButton.layer.cornerRadius = 3;
+    self.startCardTypeButton.layer.borderWidth = 0.5;
+    self.startCardTypeButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.startCardTypeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.startCardTypeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.runFastButton.layer.cornerRadius = 3;
+    self.runFastButton.layer.borderWidth = 0.5;
+    self.runFastButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.runFastButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.runFastButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.runBeardButton.layer.cornerRadius = 3;
+    self.runBeardButton.layer.borderWidth = 0.5;
+    self.runBeardButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.runBeardButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.runBeardButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"说明" style:UIBarButtonItemStylePlain target:self action:@selector(clickAction)];
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
+
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"返回白色"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+
+    
+}
+
+
+#pragma mark - login Http
+
+// 用户根据注册码 登录
+
+-(void)userLoginWithRegistrationCodeSuccessBlock:(LexiSuccessBlock)successBlock{
+    
+    
+    if (self.codeTextField.text != nil && self.codeTextField.text.length == 0) {
+        
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请输入注册码" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+        
+    }
+    
+    [SVProgressHUD showWithStatus:@"正在开启..."];
+    
+    // 快捷方式获得session对象
+    
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSString * requestUrl =  [NSString stringWithFormat:@"%@?flag=注册码登录&机器码=%@&注册码=%@&项目名称=雀神",baseUrl,[NSString deviceUUID],self.codeTextField.text];
+    NSString *encodedValue = [requestUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *url = [NSURL URLWithString:encodedValue];
+    
+    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
+    
+    urlRequest.timeoutInterval = 120;
+    
+    // 通过URL初始化task,在block内部可以直接对返回的数据进行处理
+    
+    NSURLSessionTask * task0 = [session dataTaskWithRequest:urlRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSString *result = [[NSString alloc] initWithData:data  encoding:NSUTF8StringEncoding];
+        
+        NSLog(@"---------%@", result);
+        NSLog(@"========%@=======%@",error,response);
+        self.isSuccess = YES;
+        
+        successBlock(result);
+    }];
+    
+    
+    // 启动任务
+    [task0 resume];
+    
+}
+
+
+
+#pragma mark-IBAction
+
+//透视下一家牌
+- (IBAction)firstAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    if (!self.isSuccess&&setting) {
+        [openYuWangSilder setOn:NO];
+        UIAlertView * alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先输入授权码，点击“启动游戏“" delegate:nil cancelButtonTitle:@"好" otherButtonTitles:nil, nil];
+        [alert show];
+        return;
+    }
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        
+        [self.thePlayer play];
+        
+        [self performSelector:@selector(playMusic) withObject:nil afterDelay:10];
+        
+    }else{
+        
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(playMusic) object:nil];
+        [self.thePlayer stop];
+    }
+
+    
+}
+//起手暗杠
+- (IBAction)secondAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+//快速自摸
+- (IBAction)thirdAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+//透视三家牌
+- (IBAction)fourAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+//防点炮
+- (IBAction)fiveAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+// 防杠
+- (IBAction)sixAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+//防检测防封号
+- (IBAction)sevenAction:(id)sender {
+    
+    UISwitch * openYuWangSilder = (UISwitch *)sender;
+    BOOL setting = openYuWangSilder.isOn;
+    
+    self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版功能开启成功"] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    if (setting) {
+        
+        [self.thePlayer play];
+        
+    }else{
+        
+        [self.thePlayer stop];
+    }
+    
+}
+- (IBAction)startAction:(id)sender {
+    
+    
+    if (self.starButton.isSelected) {
+        
+        return;
+    }
+    
+    __weak typeof (self) weakSelf = self;
+    
+    [self userLoginWithRegistrationCodeSuccessBlock:^(id respose) {
+        
+        __strong typeof (weakSelf)strongify = weakSelf;
+        
+        if ([respose containsString:@"登录成功"]) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [SVProgressHUD showSuccessWithStatus:@"登录成功"];
+                
+                [strongify.starButton setSelected:YES];
+                [strongify.starButton setTitle:@"启动成功" forState:UIControlStateNormal];
+                
+                strongify.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!"] error:nil];
+                [strongify.thePlayer prepareToPlay];
+                
+                [strongify.thePlayer play];
+
+            });
+        }else{
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [SVProgressHUD showErrorWithStatus:respose];
+                
+            });
+            
+        }
+        
+        
+    }];
+    
+    
+}
+
+// 播放音乐
+-(void)playMusic{
+    
+    NSString *  numberx = [NSString stringWithFormat:@"%d",(arc4random() % 27 + 1)];
+    self.thePlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:numberx] error:nil];
+    [self.thePlayer prepareToPlay];
+    
+    [self.thePlayer play];
+    
+    [self performSelector:@selector(playMusic) withObject:nil afterDelay:10];
+    
+}
+
+
+-(NSURL *)getMusicURLWith:(NSString * )name{
+    
+    NSString * musicFilePath = [[NSBundle mainBundle] pathForResource:name ofType:AudioType];
+    NSURL * musicURL = [[NSURL alloc]initFileURLWithPath:musicFilePath];
+    return musicURL;
+    
+}
+
+
+
+#pragma mark-Action
+-(void)clickAction{
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:ShuoMingMessage delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    
+    [alert show];
+    
+}
+#pragma mark -STPickerSingleDelegate
+- (void)pickerSingle:(STPickerSingle *)pickerSingle selectedTitle:(NSString *)selectedTitle {
+    
+    if (pickerSingle == self.pickerCla) {
+        
+        [self.typeButton setTitle:selectedTitle forState:UIControlStateNormal];
+        
+        return;
+    }
+    
+    if (pickerSingle == self.pickerNum) {
+        
+        [self.startCardTypeButton setTitle:selectedTitle forState:UIControlStateNormal];
+        
+        return;
+    }
+    
+    if (pickerSingle == self.pickerGood) {
+        
+        [self.goodsPersentButton setTitle:selectedTitle forState:UIControlStateNormal];
+        
+        return;
+    }
+    
+    if (pickerSingle == self.pickerFast) {
+        
+        [self.runFastButton setTitle:selectedTitle forState:UIControlStateNormal];
+        
+        return;
+    }
+    
+    if (pickerSingle == self.pickerBread) {
+        
+        [self.runBeardButton setTitle:selectedTitle forState:UIControlStateNormal];
+        
+        return;
+    }
+    
+}
+
+
+#pragma mark- IBAction
+//顶部
+- (IBAction)top:(id)sender {
+    
+    self.pickerCla = [[STPickerSingle alloc]init];
+    [self.pickerCla setArrayData:[NSMutableArray arrayWithArray:self.myDataDic[@"list"]]];
+    
+    [self.pickerCla setTitle:@"选择类型"];
+    [self.pickerCla setContentMode:STPickerContentModeBottom];
+    [self.pickerCla setDelegate:self];
+    [self.pickerCla show];
+    
+}
+// 好牌概率
+- (IBAction)goodsPersent:(id)sender {
+    
+    self.pickerGood = [[STPickerSingle alloc]init];
+    [self.pickerGood setArrayData:[NSMutableArray arrayWithArray:self.goodsPercentArr]];
+    [self.pickerGood setTitle:@"好牌机率"];
+    [self.pickerGood setContentMode:STPickerContentModeBottom];
+    [self.pickerGood setDelegate:self];
+    [self.pickerGood show];
+}
+// 起手牌型
+- (IBAction)start:(id)sender {
+    
+    self.pickerNum = [[STPickerSingle alloc]init];
+    [self.pickerNum setArrayData:[NSMutableArray arrayWithArray:self.careTypeArr]];
+    [self.pickerNum setTitle:@"起手牌型"];
+    [self.pickerNum setContentMode:STPickerContentModeBottom];
+    [self.pickerNum setDelegate:self];
+    [self.pickerNum show];
+    
+    
+}
+//跑的快
+- (IBAction)runfast:(id)sender {
+    
+    self.pickerFast = [[STPickerSingle alloc]init];
+    [self.pickerFast setArrayData:[NSMutableArray arrayWithArray:self.runFastArr]];
+    [self.pickerFast setTitle:@"跑得快"];
+    [self.pickerFast setContentMode:STPickerContentModeBottom];
+    [self.pickerFast setDelegate:self];
+    [self.pickerFast show];
+    
+}
+
+- (IBAction)runBread:(id)sender {
+    
+    self.pickerBread = [[STPickerSingle alloc]init];
+    [self.pickerBread setArrayData:[NSMutableArray arrayWithArray:self.careTypeArr]];
+    [self.pickerBread setTitle:@"跑胡子"];
+    [self.pickerBread setContentMode:STPickerContentModeBottom];
+    [self.pickerBread setDelegate:self];
+    [self.pickerBread show];
+    
+}
+
+-(void)back{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    
+}
+
+
+@end
