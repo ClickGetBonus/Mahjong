@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MAEnum.h"
 
 
 @interface GeneralCell : UITableViewCell
 
-@property (nonatomic, assign) NSInteger* a;
+
+
+- (instancetype)initWithType:(GeneralCellType)type title:(NSString *)title pickData:(NSArray <NSString *> *)pickData;
 
 @end

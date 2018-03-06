@@ -146,6 +146,7 @@
 		46B0B15974810A0BEDF8FA82 /* libPods-Mahjong.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mahjong.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AAC066BAD21992112E30157 /* Pods-MahjongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongUITests/Pods-MahjongUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B29DDEB15ADE3276E4BE2AF /* Pods-MahjongTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongTests/Pods-MahjongTests.debug.xcconfig"; sourceTree = "<group>"; };
+		611D2698204E456A004C8D2C /* MAEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAEnum.h; sourceTree = "<group>"; };
 		8404CD041EA8F59700D6093D /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		8404CD051EA8F59700D6093D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8404CD071EA8F59700D6093D /* SVIndefiniteAnimatedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVIndefiniteAnimatedView.h; sourceTree = "<group>"; };
@@ -316,6 +317,7 @@
 		3F622918204D915500805C77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				611D2698204E456A004C8D2C /* MAEnum.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -942,7 +944,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

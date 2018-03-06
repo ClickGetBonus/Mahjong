@@ -7,7 +7,9 @@ target 'Mahjong' do
 
   # Pods for Mahjong
    pod 'AFNetworking', '~> 3.1.0'
-   pod 'IQKeyboardManager', '~> 4.0.8'  
+   pod 'IQKeyboardManager', '~> 4.0.8'
+   pod 'Masonry'
+   
 target 'MahjongTests' do
     inherit! :search_paths
     # Pods for testing
