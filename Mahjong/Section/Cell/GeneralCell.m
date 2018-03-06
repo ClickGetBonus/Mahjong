@@ -16,10 +16,9 @@ static CGFloat generalCellHeight = 40.0f;
 @property(nonatomic, strong) UILabel *titleLabel;
 
 @property(nonatomic, strong) UISwitch *switcher;
-@property(nonatomic, strong) UIButton *button;
+@property(nonatomic, strong) UIButton *pickButton;
 @property(nonatomic, strong) UITextField *textField;
 
-@property(nonatomic, strong) NSArray <NSString *> *pickData;
 
 @end
 
@@ -27,29 +26,72 @@ static CGFloat generalCellHeight = 40.0f;
 
 - (instancetype)initTextFieldTypeWithTitle:(NSString *)title placeholder:(NSString *)placeholder {
     
-    [self initTitleLabel];
-    self.titleLabel.text = title;
-    
-    [self initTextField];
-    self.textField.placeholder = placeholder;
-    
-    return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"];
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"]) {
+        
+        self.type = GeneralCellTypeTextField;
+        
+        [self initTitleLabel];
+        self.title = title;
+        self.titleLabel.text = title;
+        
+        [self initTextField];
+        self.textField.placeholder = placeholder;
+    }
+    return self;
 }
 
 
-- (instancetype)initSinglePickTypeWithTitle:(NSString *)title pickData:(NSArray <NSString *> *)pickData {
-    
-    return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"];
+- (instancetype)initSinglePickTypeWithTitle:(NSString *)title  pickData:(NSArray <NSString *> *)pickData {
+   
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"]) {
+        
+        self.type = GeneralCellTypeSinglePicker;
+        
+        [self initTitleLabel];
+        self.title = title;
+        self.titleLabel.text = title;
+        
+        [self initPickButton];
+        self.pickData = pickData;
+        [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+        
+    }
+    return self;
 }
 
 - (instancetype)initSwitchWithTitle:(NSString *)title {
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"]) {
+        
+        self.type = GeneralCellTypeSwitch;
+        
+        [self initTitleLabel];
+        self.title = title;
+        self.titleLabel.text = title;
+        
+        [self initSwitch];
+        [self.switcher setOn:NO];
+    }
     
-    return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"];
+    return self;
 }
 
 - (instancetype)initSwitchAndPickTypeWithTitle:(NSString *)title pickData:(NSArray <NSString *> *)pickData {
     
-    return [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"];
+    if (self = [super initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"whatever, not use"]) {
+        
+        self.type = GeneralCellTypeSwitchAndPicker;
+        
+        [self initTitleLabel];
+        self.title = title;
+        self.titleLabel.text = title;
+        
+        [self initSwitchAndPick];
+        [self.switcher setOn:NO];
+        self.pickData = pickData;
+        [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+    }
+    
+    return self;
 }
 
 - (void)initTitleLabel {
@@ -63,10 +105,12 @@ static CGFloat generalCellHeight = 40.0f;
     self.titleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:self.titleLabel];
     
+    __weak typeof(self) weakSelf = self;
     [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.contentView.mas_left).with.offset(15);
+        make.left.equalTo(weakSelf.contentView).with.offset(15);
         make.height.mas_equalTo(generalCellHeight);
-        make.top.equalTo(self.contentView.mas_top);
+        make.top.equalTo(weakSelf.contentView);
+        make.width.equalTo(@60);
     }];
 }
 
@@ -80,13 +124,15 @@ static CGFloat generalCellHeight = 40.0f;
     self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, 120, 30)];
     self.textField.font = [UIFont systemFontOfSize:15];
     self.textField.textColor = [UIColor blackColor];
+    self.textField.borderStyle = UITextBorderStyleRoundedRect;
     [self.contentView addSubview:self.textField];
     
+    __weak typeof(self) weakSelf = self;
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel).with.offset(15);
+        make.left.equalTo(weakSelf.titleLabel.mas_right).with.offset(15);
         make.height.mas_equalTo(30);
-        make.centerY.equalTo(self.contentView);
-        make.right.equalTo(self.contentView).with.offset(-15);
+        make.centerY.equalTo(weakSelf.contentView);
+        make.right.equalTo(weakSelf.contentView).with.offset(-15);
     }];
 }
 
@@ -97,45 +143,116 @@ static CGFloat generalCellHeight = 40.0f;
     }
     
     self.switcher = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 31)];
+    [self.switcher addTarget:self action:@selector(onSwitch) forControlEvents:UIControlEventValueChanged];
     [self.contentView addSubview:self.switcher];
     
+    __weak typeof(self) weakSelf = self;
     [self.switcher mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.right.equalTo(self.contentView).with.offset(-15);
-        make.centerY.equalTo(self.contentView);
+        make.right.equalTo(weakSelf.contentView).with.offset(-15);
+        make.centerY.equalTo(weakSelf.contentView);
+        make.width.mas_equalTo(51);
+        make.height.mas_equalTo(31);
     }];
-    
 }
 
 
 - (void)initPickButton {
     
-    if (self.button != nil) {
+    if (self.pickButton != nil) {
         return;
     }
     
-    self.button = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.button.layer.cornerRadius = 3;
-    self.button.layer.borderWidth = 0.5;
-    self.button.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
-    self.button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    self.button.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-    [self.button addTarget:self action:@selector(onPick) forControlEvents:UIControlEventTouchUpInside];
-    [self.contentView addSubview:self.button];
+    self.pickButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.pickButton.layer.cornerRadius = 3;
+    self.pickButton.layer.borderWidth = 0.5;
+    [self.pickButton setTitleColor:UIColorRGB(0xCCCCCC) forState:UIControlStateNormal];
+    [self.pickButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    self.pickButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    self.pickButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.pickButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [self.pickButton addTarget:self action:@selector(onPick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.pickButton];
     
-    [self.button mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(self.titleLabel).with.offset(15);
+    __weak typeof(self) weakSelf = self;
+    [self.pickButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.titleLabel.mas_right).with.offset(15);
         make.height.mas_equalTo(30);
-        make.right.equalTo(self.contentView).with.offset(-15);
-        make.centerY.equalTo(self.contentView);
+        make.right.equalTo(weakSelf.contentView).with.offset(-15);
+        make.centerY.equalTo(weakSelf.contentView);
+    }];
+}
+
+- (void)initSwitchAndPick {
+    
+    if (self.switcher != nil || self.pickButton != nil) {
+        return;
+    }
+    
+    self.switcher = [[UISwitch alloc] initWithFrame:CGRectMake(0, 0, 51, 31)];
+    [self.switcher addTarget:self action:@selector(onSwitch) forControlEvents:UIControlEventValueChanged];
+    [self.contentView addSubview:self.switcher];
+    
+    __weak typeof(self) weakSelf = self;
+    [self.switcher mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.titleLabel.mas_right).with.offset(15);
+        make.centerY.equalTo(weakSelf.contentView);
+        make.width.mas_equalTo(51);
+        make.height.mas_equalTo(31);
+    }];
+    
+    self.pickButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.pickButton.layer.cornerRadius = 3;
+    self.pickButton.layer.borderWidth = 0.5;
+    self.pickButton.layer.borderColor = UIColorRGB(0xCCCCCC).CGColor;
+    [self.pickButton setTitleColor:UIColorRGB(0xCCCCCC) forState:UIControlStateNormal];
+    [self.pickButton.titleLabel setFont:[UIFont systemFontOfSize:15]];
+    self.pickButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.pickButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    [self.pickButton addTarget:self action:@selector(onPick) forControlEvents:UIControlEventTouchUpInside];
+    [self.contentView addSubview:self.pickButton];
+    
+    [self.pickButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(weakSelf.switcher.mas_right).with.offset(15);
+        make.height.mas_equalTo(30);
+        make.right.equalTo(weakSelf.contentView).with.offset(-15);
+        make.centerY.equalTo(weakSelf.contentView);
     }];
 }
 
 
 
-
-- (void)onPick {
-    
+- (void)setContent:(NSString *)content {
+    switch (self.type) {
+        case GeneralCellTypeTextField:
+            self.textField.text = content;
+            break;
+        case GeneralCellTypeSinglePicker:
+        case GeneralCellTypeSwitchAndPicker:
+            [self.pickButton setTitle:content forState:UIControlStateNormal];
+            break;
+        default:
+            break;
+    }
 }
 
+- (void)turnOn:(BOOL)isOn {
+    switch (self.type) {
+        case GeneralCellTypeSwitch:
+        case GeneralCellTypeSwitchAndPicker:
+            [self.switcher setOn:isOn];
+            break;
+        default:
+            break;
+    }
+}
+
+
+- (void)onPick {
+    self.pickBlock();
+}
+
+- (void)onSwitch {
+    self.switchBlock(self.switcher.isOn);
+}
 
 @end

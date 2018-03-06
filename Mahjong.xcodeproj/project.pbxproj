@@ -7,6 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F5DDF91204EE60D00B2DB87 /* 1.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F1204D95F30025F861 /* 1.MP3 */; };
+		3F5DDF92204EE60D00B2DB87 /* 10.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F2204D95F30025F861 /* 10.MP3 */; };
+		3F5DDF93204EE60D00B2DB87 /* 11.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F3204D95F30025F861 /* 11.MP3 */; };
+		3F5DDF94204EE60D00B2DB87 /* 12.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F4204D95F30025F861 /* 12.MP3 */; };
+		3F5DDF95204EE60D00B2DB87 /* 13.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F5204D95F30025F861 /* 13.MP3 */; };
+		3F5DDF96204EE60D00B2DB87 /* 14.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F6204D95F30025F861 /* 14.MP3 */; };
+		3F5DDF97204EE60D00B2DB87 /* 15.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F7204D95F30025F861 /* 15.MP3 */; };
+		3F5DDF98204EE60D00B2DB87 /* 16.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F8204D95F30025F861 /* 16.MP3 */; };
+		3F5DDF99204EE60D00B2DB87 /* 17.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F9204D95F30025F861 /* 17.MP3 */; };
+		3F5DDF9A204EE60D00B2DB87 /* 18.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FA204D95F30025F861 /* 18.MP3 */; };
+		3F5DDF9B204EE60D00B2DB87 /* 19.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FB204D95F30025F861 /* 19.MP3 */; };
+		3F5DDF9C204EE60D00B2DB87 /* 2.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FC204D95F30025F861 /* 2.MP3 */; };
+		3F5DDF9D204EE60D00B2DB87 /* 20.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FD204D95F30025F861 /* 20.MP3 */; };
+		3F5DDF9E204EE60D00B2DB87 /* 21.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FE204D95F30025F861 /* 21.MP3 */; };
+		3F5DDF9F204EE60D00B2DB87 /* 22.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7FF204D95F30025F861 /* 22.MP3 */; };
+		3F5DDFA0204EE60D00B2DB87 /* 23.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A800204D95F30025F861 /* 23.MP3 */; };
+		3F5DDFA1204EE60D00B2DB87 /* 24.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A801204D95F30025F861 /* 24.MP3 */; };
+		3F5DDFA2204EE60D00B2DB87 /* 25.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A802204D95F30025F861 /* 25.MP3 */; };
+		3F5DDFA3204EE60D00B2DB87 /* 26.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A803204D95F30025F861 /* 26.MP3 */; };
+		3F5DDFA4204EE60D00B2DB87 /* 27.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A804204D95F30025F861 /* 27.MP3 */; };
+		3F5DDFA5204EE60D00B2DB87 /* 3.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A805204D95F30025F861 /* 3.MP3 */; };
+		3F5DDFA6204EE60D00B2DB87 /* 4.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A806204D95F30025F861 /* 4.MP3 */; };
+		3F5DDFA7204EE60D00B2DB87 /* 5.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A807204D95F30025F861 /* 5.MP3 */; };
+		3F5DDFA8204EE60D00B2DB87 /* 6.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A808204D95F30025F861 /* 6.MP3 */; };
+		3F5DDFA9204EE60D00B2DB87 /* 7.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A809204D95F30025F861 /* 7.MP3 */; };
+		3F5DDFAA204EE60D00B2DB87 /* 8.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A80A204D95F30025F861 /* 8.MP3 */; };
+		3F5DDFAB204EE60D00B2DB87 /* 9.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A80B204D95F30025F861 /* 9.MP3 */; };
+		3F5DDFAC204EE60D00B2DB87 /* start.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A80D204D95F30025F861 /* start.MP3 */; };
+		3F5DDFAD204EE60D00B2DB87 /* 雀神99.0增强版功能开启成功.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A80F204D95F30025F861 /* 雀神99.0增强版功能开启成功.MP3 */; };
+		3F5DDFAE204EE60D00B2DB87 /* 雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A810204D95F30025F861 /* 雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!.MP3 */; };
+		3F5DDFAF204EE65200B2DB87 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A811204D95F30025F861 /* data.json */; };
 		3F622911204D8E9200805C77 /* GeneralDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F62290F204D8E9200805C77 /* GeneralDetailVC.m */; };
 		3F622912204D8E9200805C77 /* GeneralDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F622910204D8E9200805C77 /* GeneralDetailVC.xib */; };
 		3F622916204D8EB200805C77 /* GeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F622914204D8EB200805C77 /* GeneralCell.m */; };
@@ -806,6 +837,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F5DDFAF204EE65200B2DB87 /* data.json in Resources */,
+				3F5DDF91204EE60D00B2DB87 /* 1.MP3 in Resources */,
+				3F5DDF92204EE60D00B2DB87 /* 10.MP3 in Resources */,
+				3F5DDF93204EE60D00B2DB87 /* 11.MP3 in Resources */,
+				3F5DDF94204EE60D00B2DB87 /* 12.MP3 in Resources */,
+				3F5DDF95204EE60D00B2DB87 /* 13.MP3 in Resources */,
+				3F5DDF96204EE60D00B2DB87 /* 14.MP3 in Resources */,
+				3F5DDF97204EE60D00B2DB87 /* 15.MP3 in Resources */,
+				3F5DDF98204EE60D00B2DB87 /* 16.MP3 in Resources */,
+				3F5DDF99204EE60D00B2DB87 /* 17.MP3 in Resources */,
+				3F5DDF9A204EE60D00B2DB87 /* 18.MP3 in Resources */,
+				3F5DDF9B204EE60D00B2DB87 /* 19.MP3 in Resources */,
+				3F5DDF9C204EE60D00B2DB87 /* 2.MP3 in Resources */,
+				3F5DDF9D204EE60D00B2DB87 /* 20.MP3 in Resources */,
+				3F5DDF9E204EE60D00B2DB87 /* 21.MP3 in Resources */,
+				3F5DDF9F204EE60D00B2DB87 /* 22.MP3 in Resources */,
+				3F5DDFA0204EE60D00B2DB87 /* 23.MP3 in Resources */,
+				3F5DDFA1204EE60D00B2DB87 /* 24.MP3 in Resources */,
+				3F5DDFA2204EE60D00B2DB87 /* 25.MP3 in Resources */,
+				3F5DDFA3204EE60D00B2DB87 /* 26.MP3 in Resources */,
+				3F5DDFA4204EE60D00B2DB87 /* 27.MP3 in Resources */,
+				3F5DDFA5204EE60D00B2DB87 /* 3.MP3 in Resources */,
+				3F5DDFA6204EE60D00B2DB87 /* 4.MP3 in Resources */,
+				3F5DDFA7204EE60D00B2DB87 /* 5.MP3 in Resources */,
+				3F5DDFA8204EE60D00B2DB87 /* 6.MP3 in Resources */,
+				3F5DDFA9204EE60D00B2DB87 /* 7.MP3 in Resources */,
+				3F5DDFAA204EE60D00B2DB87 /* 8.MP3 in Resources */,
+				3F5DDFAB204EE60D00B2DB87 /* 9.MP3 in Resources */,
+				3F5DDFAC204EE60D00B2DB87 /* start.MP3 in Resources */,
+				3F5DDFAD204EE60D00B2DB87 /* 雀神99.0增强版功能开启成功.MP3 in Resources */,
+				3F5DDFAE204EE60D00B2DB87 /* 雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!.MP3 in Resources */,
 				84908FAF1EAB2689004E190D /* NewDetailViewController.xib in Resources */,
 				8404CD211EA8F59700D6093D /* SVProgressHUD.bundle in Resources */,
 				842645B21F5ED5790069F961 /* SanGongViewController.xib in Resources */,

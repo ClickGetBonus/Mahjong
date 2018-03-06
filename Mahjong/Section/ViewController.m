@@ -28,6 +28,7 @@
 #import "BaiJiaLeViewController.h"
 #import "QiCaiLaoYanCaiViewController.h"
 #import "TuiTongziViewController.h"
+#import "GeneralDetailVC.h"
 
 
 @interface ViewController ()
@@ -113,14 +114,17 @@
     
     if ([self.twoTypeArr containsObject:str]) {
         
+        GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithNibName:@"GeneralDetailVC"
+                                                                      bundle: nil];
+        [self.navigationController pushViewController:detailVC animated:YES];
         
-        NewSecondDetailViewController * detailTowVC = [[NewSecondDetailViewController alloc]initWithNibName:@"NewSecondDetailViewController" bundle:nil];
-        detailTowVC.runFastArr = self.runFastArr;
-        detailTowVC.runBeardArr = self.runBeardArr;
-        detailTowVC.careTypeArr = self.careTypeArr;
-        detailTowVC.goodsPercentArr = self.goodsPercentArr;
-        detailTowVC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:detailTowVC animated:YES];
+//        NewSecondDetailViewController * detailTowVC = [[NewSecondDetailViewController alloc]initWithNibName:@"NewSecondDetailViewController" bundle:nil];
+//        detailTowVC.runFastArr = self.runFastArr;
+//        detailTowVC.runBeardArr = self.runBeardArr;
+//        detailTowVC.careTypeArr = self.careTypeArr;
+//        detailTowVC.goodsPercentArr = self.goodsPercentArr;
+//        detailTowVC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:detailTowVC animated:YES];
  
     }else if([str isEqualToString:@"捕鱼游戏"]){
     
