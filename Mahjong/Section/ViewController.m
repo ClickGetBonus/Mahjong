@@ -29,6 +29,7 @@
 #import "QiCaiLaoYanCaiViewController.h"
 #import "TuiTongziViewController.h"
 #import "GeneralDetailVC.h"
+#import "MAEnum.h"
 
 
 @interface ViewController ()
@@ -114,8 +115,10 @@
     
     if ([self.twoTypeArr containsObject:str]) {
         
-        GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithNibName:@"GeneralDetailVC"
-                                                                      bundle: nil];
+        GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithCellTypes:@[@(GeneralCellTypeTextField),
+                                                                                 @(GeneralCellTypeSinglePicker),
+                                                                                 @(GeneralCellTypeSwitch),
+                                                                                 @(GeneralCellTypeSwitchAndPicker)]];
         [self.navigationController pushViewController:detailVC animated:YES];
         
 //        NewSecondDetailViewController * detailTowVC = [[NewSecondDetailViewController alloc]initWithNibName:@"NewSecondDetailViewController" bundle:nil];

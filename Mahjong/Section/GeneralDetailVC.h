@@ -10,4 +10,6 @@
 
 @interface GeneralDetailVC : UITableViewController
 
+- (instancetype)initWithCellTypes:(NSArray *)types;
+
 @end

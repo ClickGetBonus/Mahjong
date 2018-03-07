@@ -9,6 +9,7 @@ target 'Mahjong' do
    pod 'AFNetworking', '~> 3.1.0'
    pod 'IQKeyboardManager', '~> 4.0.8'
    pod 'Masonry'
+   pod 'YTKKeyValueStore'
    
 target 'MahjongTests' do
     inherit! :search_paths

@@ -25,18 +25,6 @@ STPickerSingleDelegate
 @property (nonatomic,strong)AVAudioPlayer *player;
 // 启动游戏
 @property (nonatomic, strong) UIButton *starButton;
-/// 选择起手牌型
-@property (nonatomic, strong) STPickerSingle *picker;
-
-
-@property(nonatomic,assign)BOOL isSuccess;// 是否授权成功
-
-@property(nonatomic, strong) NSArray <NSNumber *> *types;
-@property(nonatomic, strong) NSMutableArray <GeneralCell *> *cells;
-
-@property (nonatomic, assign) NSInteger currentEditIndex;
-
-
 @property (nonatomic,strong)NSMutableArray * dataArr;// 数据数组
 // 选择牌型
 @property(nonatomic,strong)NSArray * careTypeArr;
@@ -46,16 +34,34 @@ STPickerSingleDelegate
 @property(nonatomic,strong)NSArray * runFastArr;
 // 跑胡子
 @property(nonatomic,strong)NSArray * runBeardArr;
-
 @property(nonatomic,strong)AVAudioPlayer  * thePlayer;
-
 @property(nonatomic,strong)NSArray * twoTypeArr;// 第二种类型数组
-
 @property(nonatomic,strong)NSArray * thirdArr; //第三种类型数组
+
+
+
+// 选择器
+@property (nonatomic, strong) STPickerSingle *picker;
+@property(nonatomic,assign)BOOL isSuccess;// 是否授权成功
+
+@property(nonatomic, strong) NSArray <NSNumber *> *types;
+@property(nonatomic, strong) NSMutableArray <GeneralCell *> *cells;
+@property (nonatomic, assign) NSInteger currentEditIndex;
+
+
 
 @end
 
 @implementation GeneralDetailVC
+
+
+- (instancetype)initWithCellTypes:(NSArray *)types {
+    if (self = [super initWithNibName:@"GeneralDetailVC" bundle:nil]) {
+        self.types = types;
+    }
+    
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -92,7 +98,7 @@ STPickerSingleDelegate
 
 - (void)initSubviews {
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"说明" style:UIBarButtonItemStylePlain target:self action:@selector(clickAction)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"说明" style:UIBarButtonItemStylePlain target:self action:@selector(clickAction)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
     [self.navigationItem.leftBarButtonItem setTintColor:[UIColor whiteColor]];
     
