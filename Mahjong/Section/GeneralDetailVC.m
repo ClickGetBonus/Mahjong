@@ -13,6 +13,7 @@
 #import "NSString+Tools.h"
 #import "UIScrollView+GQScrollView.h"
 #import "STPickerSingle.h"
+#import "MANetManager.h"
 
 
 typedef void(^LexiSuccessBlock)(id respose);
@@ -48,7 +49,9 @@ STPickerSingleDelegate
 @property(nonatomic, strong) NSMutableArray <GeneralCell *> *cells;
 @property (nonatomic, assign) NSInteger currentEditIndex;
 
-
+@property (nonatomic, strong) MAGame *game;
+@property (nonatomic, strong) NSArray <MAMenu *> *menus;
+@property (nonatomic, strong) NSNumber *version;
 
 @end
 
@@ -63,9 +66,19 @@ STPickerSingleDelegate
     return self;
 }
 
+- (instancetype)initWithGame:(MAGame *)game {
+    
+    if (self = [super initWithNibName:@"GeneralDetailVC" bundle:nil]) {
+        self.game = game;
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.menus = @[];
     self.types = @[@(GeneralCellTypeTextField),
                     @(GeneralCellTypeSinglePicker),
                     @(GeneralCellTypeSwitch),
@@ -73,7 +86,7 @@ STPickerSingleDelegate
     
     [self loadJsonData];
     [self initSubviews];
-    [self generalCells];
+    [self requestMenu];
 }
 
 -(void)viewDidDisappear:(BOOL)animated{
@@ -116,21 +129,22 @@ STPickerSingleDelegate
     
     self.cells = [NSMutableArray array];
     
-    for (NSInteger i = 0; i < self.types.count; i++) {
-        GeneralCellType type = self.types[i].integerValue;
+    for (NSInteger i = 0; i < self.menus.count; i++) {
+        MAMenu *menu = self.menus[i];
+        
         GeneralCell *cell;
-        switch (type) {
+        switch (menu.type.integerValue) {
             case GeneralCellTypeTextField:
-                cell = [[GeneralCell alloc] initTextFieldTypeWithTitle:@"11" placeholder:@"请输入"];
+                cell = [[GeneralCell alloc] initTextFieldTypeWithTitle:menu.name placeholder:@"请输入"];
                 break;
             case GeneralCellTypeSwitch:
-                cell = [[GeneralCell alloc] initSwitchWithTitle:@"switch"];
+                cell = [[GeneralCell alloc] initSwitchWithTitle:menu.name];
                 break;
             case GeneralCellTypeSinglePicker:
-                cell = [[GeneralCell alloc] initSinglePickTypeWithTitle:@"single" pickData:self.careTypeArr];
+                cell = [[GeneralCell alloc] initSinglePickTypeWithTitle:menu.name pickData:menu.list];
                 break;
             default:
-                cell = [[GeneralCell alloc] initSwitchAndPickTypeWithTitle:@"switchPick" pickData:self.goodsPercentArr];
+                cell = [[GeneralCell alloc] initSwitchAndPickTypeWithTitle:menu.name pickData:menu.list];
                 break;
         }
         __weak typeof(self) weakSelf = self;
@@ -147,6 +161,21 @@ STPickerSingleDelegate
 }
 
 
+#pragma mark - Network
+- (void)requestMenu {
+    
+    __weak typeof(self) weakSelf = self;
+    [MANetManager requestMenuWithId:self.game.id
+                            success:^(GetMenuResponse * _Nullable response) {
+                                
+                                weakSelf.menus = response.data;
+                                weakSelf.version = response.version;
+                                [weakSelf generalCells];
+                                [weakSelf.tableView reloadData];
+                            } failure:^(NSError * _Nonnull error) {
+                                
+                            }];
+}
 #pragma mark - Audio
 
 // 播放音乐
@@ -200,7 +229,7 @@ STPickerSingleDelegate
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.types.count;
+    return self.menus.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

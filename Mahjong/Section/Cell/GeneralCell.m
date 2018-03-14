@@ -52,8 +52,16 @@ static CGFloat generalCellHeight = 40.0f;
         self.titleLabel.text = title;
         
         [self initPickButton];
-        self.pickData = pickData;
-        [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+        if ([pickData isKindOfClass:[NSArray class]]) {
+            self.pickData = pickData;
+            if (pickData.count >= 1) {
+                [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+            }
+        } else {
+            self.pickData = @[];
+        }
+        
+        
         
     }
     return self;
@@ -87,8 +95,15 @@ static CGFloat generalCellHeight = 40.0f;
         
         [self initSwitchAndPick];
         [self.switcher setOn:NO];
-        self.pickData = pickData;
-        [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+        if ([pickData isKindOfClass:[NSArray class]]) {
+            self.pickData = pickData;
+            if (pickData.count >= 1) {
+                [self.pickButton setTitle:pickData.firstObject forState:UIControlStateNormal];
+            }
+        } else {
+            self.pickData = @[];
+        }
+        
     }
     
     return self;
@@ -100,7 +115,7 @@ static CGFloat generalCellHeight = 40.0f;
         return;
     }
     
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, generalCellHeight)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, generalCellHeight)];
     self.titleLabel.font = [UIFont systemFontOfSize:15];
     self.titleLabel.textColor = [UIColor blackColor];
     [self.contentView addSubview:self.titleLabel];
@@ -110,7 +125,7 @@ static CGFloat generalCellHeight = 40.0f;
         make.left.equalTo(weakSelf.contentView).with.offset(15);
         make.height.mas_equalTo(generalCellHeight);
         make.top.equalTo(weakSelf.contentView);
-        make.width.equalTo(@60);
+        make.width.equalTo(@100);
     }];
 }
 

@@ -10,6 +10,8 @@ target 'Mahjong' do
    pod 'IQKeyboardManager', '~> 4.0.8'
    pod 'Masonry'
    pod 'YTKKeyValueStore'
+   pod 'SDWebImage'
+   pod 'MJExtension'
    
 target 'MahjongTests' do
     inherit! :search_paths

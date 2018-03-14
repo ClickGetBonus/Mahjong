@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F3AD7EC2051785D00D90832 /* MANetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7EB2051785D00D90832 /* MANetManager.m */; };
+		3F3AD7F0205178A100D90832 /* MAGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7EF205178A100D90832 /* MAGame.m */; };
+		3F3AD7F420517AD200D90832 /* GetGamesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7F320517AD200D90832 /* GetGamesResponse.m */; };
+		3F3AD7F72051828500D90832 /* MAMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7F62051828500D90832 /* MAMenu.m */; };
+		3F3AD7FA2051828F00D90832 /* GetMenuResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7F92051828F00D90832 /* GetMenuResponse.m */; };
 		3F5DDF91204EE60D00B2DB87 /* 1.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F1204D95F30025F861 /* 1.MP3 */; };
 		3F5DDF92204EE60D00B2DB87 /* 10.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F2204D95F30025F861 /* 10.MP3 */; };
 		3F5DDF93204EE60D00B2DB87 /* 11.MP3 in Resources */ = {isa = PBXBuildFile; fileRef = 3FF3A7F3204D95F30025F861 /* 11.MP3 */; };
@@ -137,6 +142,16 @@
 		232F3733526DD40A9D07B029 /* Pods-Mahjong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mahjong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mahjong/Pods-Mahjong.debug.xcconfig"; sourceTree = "<group>"; };
 		33B26222D742A9E4EB65C873 /* Pods-MahjongUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongUITests/Pods-MahjongUITests.release.xcconfig"; sourceTree = "<group>"; };
 		38D82B7D0DF920AA4E979CB6 /* libPods-MahjongTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MahjongTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3AD7EA2051785D00D90832 /* MANetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MANetManager.h; sourceTree = "<group>"; };
+		3F3AD7EB2051785D00D90832 /* MANetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MANetManager.m; sourceTree = "<group>"; };
+		3F3AD7EE205178A100D90832 /* MAGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGame.h; sourceTree = "<group>"; };
+		3F3AD7EF205178A100D90832 /* MAGame.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAGame.m; sourceTree = "<group>"; };
+		3F3AD7F220517AD200D90832 /* GetGamesResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetGamesResponse.h; sourceTree = "<group>"; };
+		3F3AD7F320517AD200D90832 /* GetGamesResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetGamesResponse.m; sourceTree = "<group>"; };
+		3F3AD7F52051828500D90832 /* MAMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAMenu.h; sourceTree = "<group>"; };
+		3F3AD7F62051828500D90832 /* MAMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MAMenu.m; sourceTree = "<group>"; };
+		3F3AD7F82051828F00D90832 /* GetMenuResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GetMenuResponse.h; sourceTree = "<group>"; };
+		3F3AD7F92051828F00D90832 /* GetMenuResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GetMenuResponse.m; sourceTree = "<group>"; };
 		3F62290E204D8E9200805C77 /* GeneralDetailVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralDetailVC.h; sourceTree = "<group>"; };
 		3F62290F204D8E9200805C77 /* GeneralDetailVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralDetailVC.m; sourceTree = "<group>"; };
 		3F622910204D8E9200805C77 /* GeneralDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralDetailVC.xib; sourceTree = "<group>"; };
@@ -322,6 +337,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F3AD7ED2051787800D90832 /* MAModel */ = {
+			isa = PBXGroup;
+			children = (
+				3F3AD7EE205178A100D90832 /* MAGame.h */,
+				3F3AD7EF205178A100D90832 /* MAGame.m */,
+				3F3AD7F52051828500D90832 /* MAMenu.h */,
+				3F3AD7F62051828500D90832 /* MAMenu.m */,
+			);
+			path = MAModel;
+			sourceTree = "<group>";
+		};
+		3F3AD7F120517ABB00D90832 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				3F3AD7F220517AD200D90832 /* GetGamesResponse.h */,
+				3F3AD7F320517AD200D90832 /* GetGamesResponse.m */,
+				3F3AD7F82051828F00D90832 /* GetMenuResponse.h */,
+				3F3AD7F92051828F00D90832 /* GetMenuResponse.m */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		3F62290C204D8E3F00805C77 /* Section */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +385,8 @@
 		3F622918204D915500805C77 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				3F3AD7F120517ABB00D90832 /* Response */,
+				3F3AD7ED2051787800D90832 /* MAModel */,
 				611D2698204E456A004C8D2C /* MAEnum.h */,
 			);
 			path = Model;
@@ -382,6 +421,8 @@
 		3FCD1483204D86C200E70380 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				3F3AD7EA2051785D00D90832 /* MANetManager.h */,
+				3F3AD7EB2051785D00D90832 /* MANetManager.m */,
 			);
 			path = Net;
 			sourceTree = "<group>";
@@ -795,7 +836,7 @@
 				TargetAttributes = {
 					841B69521EA8AD5F0096DA0F = {
 						CreatedOnToolsVersion = 8.3.1;
-						DevelopmentTeam = GU23KNH4MU;
+						DevelopmentTeam = XY62Q8VUQ7;
 						ProvisioningStyle = Automatic;
 					};
 					841B696B1EA8AD5F0096DA0F = {
@@ -1006,7 +1047,7 @@
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/IQKeyboardManager.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1072,6 +1113,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842645AC1F5ED5650069F961 /* LaoHuJiViewController.m in Sources */,
+				3F3AD7EC2051785D00D90832 /* MANetManager.m in Sources */,
 				84908FF11EAB4917004E190D /* NewSecondDetailViewController.m in Sources */,
 				840AF8241EB7611300AB8203 /* DouNiuYouXiViewController.m in Sources */,
 				840B43E01F6CC3F700F70C82 /* PaiJiuShezhiViewController.m in Sources */,
@@ -1092,18 +1134,22 @@
 				840745871EAC4966004C4AF1 /* FishingDetailViewController.m in Sources */,
 				8404CD3B1EA900D300D6093D /* UIView+ST.m in Sources */,
 				840AF81F1EB75C7300AB8203 /* YingShanZhangViewController.m in Sources */,
+				3F3AD7F72051828500D90832 /* MAMenu.m in Sources */,
 				84BCE2141EACE8C400B4FB0A /* ZhaJinHuaViewController.m in Sources */,
+				3F3AD7FA2051828F00D90832 /* GetMenuResponse.m in Sources */,
 				8404CD301EA900AF00D6093D /* STPickerView.m in Sources */,
 				8404CD221EA8F59700D6093D /* SVProgressHUD.m in Sources */,
 				84BCE2191EACEC8A00B4FB0A /* CustomYouXiViewController.m in Sources */,
 				8404CD1F1EA8F59700D6093D /* SVIndefiniteAnimatedView.m in Sources */,
 				841B69581EA8AD5F0096DA0F /* main.m in Sources */,
 				3F622916204D8EB200805C77 /* GeneralCell.m in Sources */,
+				3F3AD7F420517AD200D90832 /* GetGamesResponse.m in Sources */,
 				8404CD291EA8F59700D6093D /* NSString+Tools.m in Sources */,
 				8404CD3A1EA900D300D6093D /* STUI.m in Sources */,
 				8404CD391EA900D300D6093D /* STConst.m in Sources */,
 				842645B61F5ED58C0069F961 /* DeKeSaSiViewController.m in Sources */,
 				8404CD201EA8F59700D6093D /* SVProgressAnimatedView.m in Sources */,
+				3F3AD7F0205178A100D90832 /* MAGame.m in Sources */,
 				842645A71F5ED54D0069F961 /* WuShiKeiViewController.m in Sources */,
 				840B445E1F6CE0D400F70C82 /* QiCaiLaoYanCaiViewController.m in Sources */,
 				841337151EA9ACCD00A7544E /* SVProgressHUD+MYProgressHUD.m in Sources */,
@@ -1254,7 +1300,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = GU23KNH4MU;
+				DEVELOPMENT_TEAM = XY62Q8VUQ7;
 				GCC_PREFIX_HEADER = Mahjong/PrefixHeader.pch;
 				INFOPLIST_FILE = Mahjong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1269,7 +1315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = GU23KNH4MU;
+				DEVELOPMENT_TEAM = XY62Q8VUQ7;
 				GCC_PREFIX_HEADER = Mahjong/PrefixHeader.pch;
 				INFOPLIST_FILE = Mahjong/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

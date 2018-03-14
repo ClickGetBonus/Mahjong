@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MAGame.h"
 
 @interface MahjongCollectionViewCell : UICollectionViewCell
 
 -(void)configureDataWite:(id)data;
+
+- (void)configureBy:(MAGame *)game;
 
 @end

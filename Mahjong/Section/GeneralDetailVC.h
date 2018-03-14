@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MAGame.h"
 
 @interface GeneralDetailVC : UITableViewController
 
 - (instancetype)initWithCellTypes:(NSArray *)types;
+
+- (instancetype)initWithGame:(MAGame *)game;
 
 @end

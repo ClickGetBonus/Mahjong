@@ -30,7 +30,8 @@
 #import "TuiTongziViewController.h"
 #import "GeneralDetailVC.h"
 #import "MAEnum.h"
-
+#import <AFNetworking.h>
+#import "MANetManager.h"
 
 @interface ViewController ()
 
@@ -52,6 +53,9 @@
 @property(nonatomic,strong)NSArray * thirdArr; //第三种类型数组
 
 
+@property(nonatomic, strong) NSArray <MAGame *> *games;
+@property(nonatomic, strong) NSNumber *version;
+
 @end
 
 @implementation ViewController
@@ -61,8 +65,9 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"授权" style:UIBarButtonItemStylePlain target:self action:@selector(clickAction)];
     [self.navigationItem.rightBarButtonItem setTintColor:[UIColor whiteColor]];
-
     
+    
+    self.games = @[];
     self.thePlayer =   [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:@"start"] error:nil];
     [self.thePlayer prepareToPlay];
     [self.thePlayer play];
@@ -83,219 +88,239 @@
     self.thirdArr = @[@"棋牌游戏"];
     
     [self configureViews];
+    
+    [self requestGames];
 }
 
 #pragma mark- ConfigureView
 
 -(void)configureViews{
-
+    
     [self.myCollectionView registerNib:[UINib nibWithNibName:@"MahjongCollectionViewCell" bundle:nil] forCellWithReuseIdentifier:@"MahjongCollectionViewCell"];
+}
+
+#pragma mark - Network
+
+- (void)requestGames {
+    
+    __weak typeof(self) weakSelf = self;
+    [MANetManager requestGamesSuccess:^(GetGamesResponse * _Nullable response) {
+        
+        weakSelf.games = response.data;
+        weakSelf.version = response.version;
+        [weakSelf.myCollectionView reloadData];
+        
+    } failure:^(NSError * _Nonnull error) {
+        
+    }];
+    
 }
 
 #pragma mark -UICollectionViewDataSource
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return  self.dataArr.count;
-
+//    return  self.dataArr.count;
+    return self.games.count;
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
-    MahjongCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MahjongCollectionViewCell" forIndexPath:indexPath];
-    [cell configureDataWite:self.dataArr[indexPath.row]];
     
+    MahjongCollectionViewCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"MahjongCollectionViewCell" forIndexPath:indexPath];
+//    [cell configureDataWite:self.dataArr[indexPath.row]];
+    [cell configureBy:self.games[indexPath.row]];
     return cell;
 }
 #pragma mark- UICollectionViewDelegate
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSDictionary * dic = self.dataArr[indexPath.row];
-    NSString * str  = dic[@"name"];
     
-    if ([self.twoTypeArr containsObject:str]) {
-        
-        GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithCellTypes:@[@(GeneralCellTypeTextField),
-                                                                                 @(GeneralCellTypeSinglePicker),
-                                                                                 @(GeneralCellTypeSwitch),
-                                                                                 @(GeneralCellTypeSwitchAndPicker)]];
-        [self.navigationController pushViewController:detailVC animated:YES];
-        
-//        NewSecondDetailViewController * detailTowVC = [[NewSecondDetailViewController alloc]initWithNibName:@"NewSecondDetailViewController" bundle:nil];
-//        detailTowVC.runFastArr = self.runFastArr;
-//        detailTowVC.runBeardArr = self.runBeardArr;
-//        detailTowVC.careTypeArr = self.careTypeArr;
-//        detailTowVC.goodsPercentArr = self.goodsPercentArr;
-//        detailTowVC.myDataDic = self.dataArr[indexPath.row];
-//        [self.navigationController pushViewController:detailTowVC animated:YES];
- 
-    }else if([str isEqualToString:@"捕鱼游戏"]){
+//    GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithCellTypes:@[@(GeneralCellTypeTextField),
+//                                                                             @(GeneralCellTypeSinglePicker),
+//                                                                             @(GeneralCellTypeSwitch),
+//                                                                             @(GeneralCellTypeSwitchAndPicker)]];
+    GeneralDetailVC *detailVC = [[GeneralDetailVC alloc] initWithGame:self.games[indexPath.row]];
+    [self.navigationController pushViewController:detailVC animated:YES];
     
-        
-        FishingDetailViewController * fishingVC = [[FishingDetailViewController alloc]initWithNibName:@"FishingDetailViewController" bundle:nil];
-        fishingVC.runFastArr = self.runFastArr;
-        fishingVC.runBeardArr = self.runBeardArr;
-        fishingVC.careTypeArr = self.careTypeArr;
-        fishingVC.goodsPercentArr = self.goodsPercentArr;
-        fishingVC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:fishingVC animated:YES];
-        
-    }else if([self.thirdArr containsObject:str]){
-    
-        CHessViewController * chessVC = [[CHessViewController alloc]initWithNibName:@"CHessViewController" bundle:nil];
-        chessVC.runFastArr = self.runFastArr;
-        chessVC.runBeardArr = self.runBeardArr;
-        chessVC.careTypeArr = self.careTypeArr;
-        chessVC.goodsPercentArr = self.goodsPercentArr;
-        chessVC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:chessVC animated:YES];
-        
-        
-    }else if([str isEqualToString:@"十三水游戏"]){
-    
-        SanShuiViewController * VC = [[SanShuiViewController alloc]initWithNibName:@"SanShuiViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-
-    }else if ([str isEqualToString:@"炸金花游戏"]){
-        
-        ZhaJinHuaViewController * VC = [[ZhaJinHuaViewController alloc]initWithNibName:@"ZhaJinHuaViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else if ([str isEqualToString:@"自动识别平台"])
-    {
-        CustomYouXiViewController * VC = [[CustomYouXiViewController alloc]initWithNibName:@"CustomYouXiViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if ([str isEqualToString:@"五十K"])
-    {
-        WuShiKeiViewController * VC = [[WuShiKeiViewController alloc]initWithNibName:@"WuShiKeiViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }
-    else if ([str isEqualToString:@"老虎机"])
-    {
-        LaoHuJiViewController * VC = [[LaoHuJiViewController alloc]initWithNibName:@"LaoHuJiViewController" bundle:nil];
-
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if ([str isEqualToString:@"三公"])
-    {
-        SanGongViewController * VC = [[SanGongViewController alloc]initWithNibName:@"SanGongViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if ([str isEqualToString:@"德克萨斯扑克"])
-    {
-        DeKeSaSiViewController * VC = [[DeKeSaSiViewController alloc]initWithNibName:@"DeKeSaSiViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if([str isEqualToString:@"斗地主游戏"]){
-    
-        DouDiZhuYouXiViewController * VC = [[DouDiZhuYouXiViewController alloc]initWithNibName:@"DouDiZhuYouXiViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if([str isEqualToString:@"斗牛游戏"]){
-    
-        DouNiuYouXiViewController * VC = [[DouNiuYouXiViewController alloc]initWithNibName:@"DouNiuYouXiViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        
-        [self.navigationController pushViewController:VC animated:YES];
-        
-    }else if ([str isEqualToString:@"赢三张游戏"]){
-        
-        YingShanZhangViewController * VC = [[YingShanZhangViewController alloc]initWithNibName:@"YingShanZhangViewController" bundle:nil];
-        VC.runFastArr = self.runFastArr;
-        VC.runBeardArr = self.runBeardArr;
-        VC.careTypeArr = self.careTypeArr;
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else if ([str isEqualToString:@"牌九设置"]){
-        
-        PaiJiuShezhiViewController * VC = [[PaiJiuShezhiViewController alloc]initWithNibName:@"PaiJiuShezhiViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else if ([str isEqualToString:@"百家乐"]){
-        
-        BaiJiaLeViewController * VC = [[BaiJiaLeViewController alloc]initWithNibName:@"BaiJiaLeViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        VC.careTypeArr = self.careTypeArr;
-
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else if ([str isEqualToString:@"七彩捞腌菜"]){
-        
-        QiCaiLaoYanCaiViewController * VC = [[QiCaiLaoYanCaiViewController alloc]initWithNibName:@"QiCaiLaoYanCaiViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else if ([str isEqualToString:@"推筒子"]){
-        
-        TuiTongziViewController * VC = [[TuiTongziViewController alloc]initWithNibName:@"TuiTongziViewController" bundle:nil];
-        VC.goodsPercentArr = self.goodsPercentArr;
-        VC.myDataDic = self.dataArr[indexPath.row];
-        
-        [self.navigationController pushViewController:VC animated:YES];
-        
-        
-    }else{
-    
-        NewDetailViewController * detailVC = [[NewDetailViewController alloc]initWithNibName:@"NewDetailViewController" bundle:nil];
-        detailVC.runFastArr = self.runFastArr;
-        detailVC.runBeardArr = self.runBeardArr;
-        detailVC.careTypeArr = self.careTypeArr;
-        detailVC.goodsPercentArr = self.goodsPercentArr;
-        detailVC.myDataDic = self.dataArr[indexPath.row];
-        [self.navigationController pushViewController:detailVC animated:YES];
-
-        
-    }
-    
-    
+//    NSDictionary * dic = self.dataArr[indexPath.row];
+//    NSString * str  = dic[@"name"];
+//
+//    if ([self.twoTypeArr containsObject:str]) {
+//
+//
+//                NewSecondDetailViewController * detailTowVC = [[NewSecondDetailViewController alloc]initWithNibName:@"NewSecondDetailViewController" bundle:nil];
+//                detailTowVC.runFastArr = self.runFastArr;
+//                detailTowVC.runBeardArr = self.runBeardArr;
+//                detailTowVC.careTypeArr = self.careTypeArr;
+//                detailTowVC.goodsPercentArr = self.goodsPercentArr;
+//                detailTowVC.myDataDic = self.dataArr[indexPath.row];
+//                [self.navigationController pushViewController:detailTowVC animated:YES];
+//
+//    }else if([str isEqualToString:@"捕鱼游戏"]){
+//
+//
+//        FishingDetailViewController * fishingVC = [[FishingDetailViewController alloc]initWithNibName:@"FishingDetailViewController" bundle:nil];
+//        fishingVC.runFastArr = self.runFastArr;
+//        fishingVC.runBeardArr = self.runBeardArr;
+//        fishingVC.careTypeArr = self.careTypeArr;
+//        fishingVC.goodsPercentArr = self.goodsPercentArr;
+//        fishingVC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:fishingVC animated:YES];
+//
+//    }else if([self.thirdArr containsObject:str]){
+//
+//        CHessViewController * chessVC = [[CHessViewController alloc]initWithNibName:@"CHessViewController" bundle:nil];
+//        chessVC.runFastArr = self.runFastArr;
+//        chessVC.runBeardArr = self.runBeardArr;
+//        chessVC.careTypeArr = self.careTypeArr;
+//        chessVC.goodsPercentArr = self.goodsPercentArr;
+//        chessVC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:chessVC animated:YES];
+//
+//
+//    }else if([str isEqualToString:@"十三水游戏"]){
+//
+//        SanShuiViewController * VC = [[SanShuiViewController alloc]initWithNibName:@"SanShuiViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if ([str isEqualToString:@"炸金花游戏"]){
+//
+//        ZhaJinHuaViewController * VC = [[ZhaJinHuaViewController alloc]initWithNibName:@"ZhaJinHuaViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else if ([str isEqualToString:@"自动识别平台"])
+//    {
+//        CustomYouXiViewController * VC = [[CustomYouXiViewController alloc]initWithNibName:@"CustomYouXiViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if ([str isEqualToString:@"五十K"])
+//    {
+//        WuShiKeiViewController * VC = [[WuShiKeiViewController alloc]initWithNibName:@"WuShiKeiViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }
+//    else if ([str isEqualToString:@"老虎机"])
+//    {
+//        LaoHuJiViewController * VC = [[LaoHuJiViewController alloc]initWithNibName:@"LaoHuJiViewController" bundle:nil];
+//
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if ([str isEqualToString:@"三公"])
+//    {
+//        SanGongViewController * VC = [[SanGongViewController alloc]initWithNibName:@"SanGongViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if ([str isEqualToString:@"德克萨斯扑克"])
+//    {
+//        DeKeSaSiViewController * VC = [[DeKeSaSiViewController alloc]initWithNibName:@"DeKeSaSiViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if([str isEqualToString:@"斗地主游戏"]){
+//
+//        DouDiZhuYouXiViewController * VC = [[DouDiZhuYouXiViewController alloc]initWithNibName:@"DouDiZhuYouXiViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if([str isEqualToString:@"斗牛游戏"]){
+//
+//        DouNiuYouXiViewController * VC = [[DouNiuYouXiViewController alloc]initWithNibName:@"DouNiuYouXiViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//    }else if ([str isEqualToString:@"赢三张游戏"]){
+//
+//        YingShanZhangViewController * VC = [[YingShanZhangViewController alloc]initWithNibName:@"YingShanZhangViewController" bundle:nil];
+//        VC.runFastArr = self.runFastArr;
+//        VC.runBeardArr = self.runBeardArr;
+//        VC.careTypeArr = self.careTypeArr;
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else if ([str isEqualToString:@"牌九设置"]){
+//
+//        PaiJiuShezhiViewController * VC = [[PaiJiuShezhiViewController alloc]initWithNibName:@"PaiJiuShezhiViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else if ([str isEqualToString:@"百家乐"]){
+//
+//        BaiJiaLeViewController * VC = [[BaiJiaLeViewController alloc]initWithNibName:@"BaiJiaLeViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//        VC.careTypeArr = self.careTypeArr;
+//
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else if ([str isEqualToString:@"七彩捞腌菜"]){
+//
+//        QiCaiLaoYanCaiViewController * VC = [[QiCaiLaoYanCaiViewController alloc]initWithNibName:@"QiCaiLaoYanCaiViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else if ([str isEqualToString:@"推筒子"]){
+//
+//        TuiTongziViewController * VC = [[TuiTongziViewController alloc]initWithNibName:@"TuiTongziViewController" bundle:nil];
+//        VC.goodsPercentArr = self.goodsPercentArr;
+//        VC.myDataDic = self.dataArr[indexPath.row];
+//
+//        [self.navigationController pushViewController:VC animated:YES];
+//
+//
+//    }else{
+//
+//        NewDetailViewController * detailVC = [[NewDetailViewController alloc]initWithNibName:@"NewDetailViewController" bundle:nil];
+//        detailVC.runFastArr = self.runFastArr;
+//        detailVC.runBeardArr = self.runBeardArr;
+//        detailVC.careTypeArr = self.careTypeArr;
+//        detailVC.goodsPercentArr = self.goodsPercentArr;
+//        detailVC.myDataDic = self.dataArr[indexPath.row];
+//        [self.navigationController pushViewController:detailVC animated:YES];
+//
+//
+//    }
 }
 
 #pragma mark - UICollectionViewDelegateFlowLayout
@@ -306,12 +331,12 @@
     if (Iphone5s) {
         
         return CGSizeMake((KScreenWidth - 75)/3, (KScreenWidth - 75)/3 + 40);
-  
+        
     }
     if (Iphone6){
-    
+        
         return CGSizeMake((KScreenWidth - 75)/4, (KScreenWidth - 75)/4 + 40);
- 
+        
     }
     return CGSizeMake((KScreenWidth - 90)/4, (KScreenWidth - 90)/4 + 40);
 }
@@ -336,7 +361,7 @@
 
 #pragma mark- Setter/Getter
 -(NSMutableArray *)dataArr{
-
+    
     if (!_dataArr) {
         _dataArr = [NSMutableArray array];
     }

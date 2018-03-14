@@ -7,6 +7,7 @@
 //
 
 #import "MahjongCollectionViewCell.h"
+#import <UIImageView+WebCache.h>
 
 @interface MahjongCollectionViewCell ()
 
@@ -49,5 +50,22 @@
     
     
 }
+
+
+- (void)configureBy:(MAGame *)game {
+    
+    [self.headerImageView sd_setImageWithURL:[NSURL URLWithString:game.img]];
+    
+    NSString * nameStr = [NSString stringWithFormat:@" %@    ",game.name];
+    NSMutableAttributedString * attriStr = [[NSMutableAttributedString alloc]initWithString:nameStr attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:12]}];
+    NSTextAttachment  * attcahMent = [NSTextAttachment new];
+    attcahMent.image = [UIImage imageNamed:@"set"];
+    attcahMent.bounds =  CGRectMake(0, -3, 15, 15);
+    NSAttributedString *text = [NSAttributedString attributedStringWithAttachment:attcahMent];
+    [attriStr insertAttributedString:text atIndex:0];
+    
+    self.nameLabel.attributedText = attriStr;
+}
+
 
 @end
