@@ -47,6 +47,10 @@
 		3F622912204D8E9200805C77 /* GeneralDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F622910204D8E9200805C77 /* GeneralDetailVC.xib */; };
 		3F622916204D8EB200805C77 /* GeneralCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F622914204D8EB200805C77 /* GeneralCell.m */; };
 		3F622917204D8EB200805C77 /* GeneralCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F622915204D8EB200805C77 /* GeneralCell.xib */; };
+		3F63948B205AB04500483009 /* CardSelecter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63948A205AB04500483009 /* CardSelecter.m */; };
+		3F639490205AB4D700483009 /* CardSelecterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63948E205AB4D700483009 /* CardSelecterCell.m */; };
+		3F639491205AB4D700483009 /* CardSelecterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F63948F205AB4D700483009 /* CardSelecterCell.xib */; };
+		3F639497205ACCDB00483009 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F639496205ACCDB00483009 /* Card.m */; };
 		41AC794721CDE80BC087846A /* libPods-Mahjong.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B0B15974810A0BEDF8FA82 /* libPods-Mahjong.a */; };
 		8404CD1D1EA8F59700D6093D /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8404CD041EA8F59700D6093D /* LICENSE.txt */; };
 		8404CD1E1EA8F59700D6093D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8404CD051EA8F59700D6093D /* README.md */; };
@@ -158,6 +162,13 @@
 		3F622913204D8EB200805C77 /* GeneralCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneralCell.h; sourceTree = "<group>"; };
 		3F622914204D8EB200805C77 /* GeneralCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GeneralCell.m; sourceTree = "<group>"; };
 		3F622915204D8EB200805C77 /* GeneralCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralCell.xib; sourceTree = "<group>"; };
+		3F639489205AB04500483009 /* CardSelecter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardSelecter.h; sourceTree = "<group>"; };
+		3F63948A205AB04500483009 /* CardSelecter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardSelecter.m; sourceTree = "<group>"; };
+		3F63948D205AB4D700483009 /* CardSelecterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardSelecterCell.h; sourceTree = "<group>"; };
+		3F63948E205AB4D700483009 /* CardSelecterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardSelecterCell.m; sourceTree = "<group>"; };
+		3F63948F205AB4D700483009 /* CardSelecterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelecterCell.xib; sourceTree = "<group>"; };
+		3F639495205ACCDB00483009 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		3F639496205ACCDB00483009 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		3FF3A7F1204D95F30025F861 /* 1.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.MP3; sourceTree = "<group>"; };
 		3FF3A7F2204D95F30025F861 /* 10.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10.MP3; sourceTree = "<group>"; };
 		3FF3A7F3204D95F30025F861 /* 11.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 11.MP3; sourceTree = "<group>"; };
@@ -388,6 +399,8 @@
 				3F3AD7F120517ABB00D90832 /* Response */,
 				3F3AD7ED2051787800D90832 /* MAModel */,
 				611D2698204E456A004C8D2C /* MAEnum.h */,
+				3F639495205ACCDB00483009 /* Card.h */,
+				3F639496205ACCDB00483009 /* Card.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -416,6 +429,18 @@
 				841B69621EA8AD5F0096DA0F /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		3F63948C205AB4BB00483009 /* CardSelecter */ = {
+			isa = PBXGroup;
+			children = (
+				3F639489205AB04500483009 /* CardSelecter.h */,
+				3F63948A205AB04500483009 /* CardSelecter.m */,
+				3F63948D205AB4D700483009 /* CardSelecterCell.h */,
+				3F63948E205AB4D700483009 /* CardSelecterCell.m */,
+				3F63948F205AB4D700483009 /* CardSelecterCell.xib */,
+			);
+			path = CardSelecter;
 			sourceTree = "<group>";
 		};
 		3FCD1483204D86C200E70380 /* Net */ = {
@@ -753,6 +778,7 @@
 		841B698D1EA8B07C0096DA0F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				3F63948C205AB4BB00483009 /* CardSelecter */,
 				841B698E1EA8BA400096DA0F /* MahjongCollectionViewCell.h */,
 				841B698F1EA8BA400096DA0F /* MahjongCollectionViewCell.m */,
 				841B69901EA8BA400096DA0F /* MahjongCollectionViewCell.xib */,
@@ -895,6 +921,7 @@
 				3F5DDF9E204EE60D00B2DB87 /* 21.MP3 in Resources */,
 				3F5DDF9F204EE60D00B2DB87 /* 22.MP3 in Resources */,
 				3F5DDFA0204EE60D00B2DB87 /* 23.MP3 in Resources */,
+				3F639491205AB4D700483009 /* CardSelecterCell.xib in Resources */,
 				3F5DDFA1204EE60D00B2DB87 /* 24.MP3 in Resources */,
 				3F5DDFA2204EE60D00B2DB87 /* 25.MP3 in Resources */,
 				3F5DDFA3204EE60D00B2DB87 /* 26.MP3 in Resources */,
@@ -1126,6 +1153,7 @@
 				840B44631F6CE7AC00F70C82 /* TuiTongziViewController.m in Sources */,
 				8404CD2C1EA8F5A000D6093D /* UIScrollView+GQScrollView.m in Sources */,
 				841B695B1EA8AD5F0096DA0F /* AppDelegate.m in Sources */,
+				3F639490205AB4D700483009 /* CardSelecterCell.m in Sources */,
 				8413371B1EA9B7ED00A7544E /* STPickerSingle.m in Sources */,
 				841B69911EA8BA400096DA0F /* MahjongCollectionViewCell.m in Sources */,
 				8404CD251EA8F59700D6093D /* Readme.markdown in Sources */,
@@ -1149,6 +1177,7 @@
 				8404CD391EA900D300D6093D /* STConst.m in Sources */,
 				842645B61F5ED58C0069F961 /* DeKeSaSiViewController.m in Sources */,
 				8404CD201EA8F59700D6093D /* SVProgressAnimatedView.m in Sources */,
+				3F63948B205AB04500483009 /* CardSelecter.m in Sources */,
 				3F3AD7F0205178A100D90832 /* MAGame.m in Sources */,
 				842645A71F5ED54D0069F961 /* WuShiKeiViewController.m in Sources */,
 				840B445E1F6CE0D400F70C82 /* QiCaiLaoYanCaiViewController.m in Sources */,
@@ -1157,6 +1186,7 @@
 				840AF8291EB7612E00AB8203 /* DouDiZhuYouXiViewController.m in Sources */,
 				842645B11F5ED5790069F961 /* SanGongViewController.m in Sources */,
 				3F622911204D8E9200805C77 /* GeneralDetailVC.m in Sources */,
+				3F639497205ACCDB00483009 /* Card.m in Sources */,
 				8404CD231EA8F59700D6093D /* SVRadialGradientLayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

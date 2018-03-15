@@ -14,6 +14,7 @@
 #import "UIScrollView+GQScrollView.h"
 #import "STPickerSingle.h"
 #import "MANetManager.h"
+#import "CardSelecter.h"
 
 
 typedef void(^LexiSuccessBlock)(id respose);
@@ -43,6 +44,8 @@ STPickerSingleDelegate
 
 // 选择器
 @property (nonatomic, strong) STPickerSingle *picker;
+@property (nonatomic, strong) CardSelecter *cardSelecter;
+
 @property(nonatomic,assign)BOOL isSuccess;// 是否授权成功
 
 @property(nonatomic, strong) NSArray <NSNumber *> *types;
@@ -143,6 +146,10 @@ STPickerSingleDelegate
             case GeneralCellTypeSinglePicker:
                 cell = [[GeneralCell alloc] initSinglePickTypeWithTitle:menu.name pickData:menu.list];
                 break;
+            case GeneralCellTypePokerSelect:
+            case GeneralCellTypeMahjongSelect:
+                cell = [[GeneralCell alloc] initSwitchWithTitle:menu.name];
+                break;
             default:
                 cell = [[GeneralCell alloc] initSwitchAndPickTypeWithTitle:menu.name pickData:menu.list];
                 break;
@@ -153,8 +160,19 @@ STPickerSingleDelegate
             weakSelf.currentEditIndex = weakCell.index;
             [weakSelf showPickerWithData:weakCell.pickData title:weakCell.title];
         };
-        cell.switchBlock = ^(BOOL isOn) {
-            isOn ? [self playTurnOnMusic] : [self stopTurnOnMusic];
+        
+        cell.switchBlock = ^(BOOL isOn, NSUInteger index) {
+            
+            MAMenu *menu = self.menus[i];
+            
+            NSInteger type = menu.type.integerValue;
+            if (type == GeneralCellTypePokerSelect) {
+                if (isOn) {
+                    [weakSelf showPokerSelecter];
+                } else {
+                    [weakSelf hidePokerSelecter];
+                }
+            }
         };
         [self.cells addObject:cell];
     }
@@ -199,6 +217,20 @@ STPickerSingleDelegate
     
 }
 
+
+#pragma mark - CardSelecter
+- (void)showPokerSelecter {
+    if (self.cardSelecter == nil) {
+        self.cardSelecter = [[CardSelecter alloc] initWithFrame:self.view.bounds];
+    }
+    [self.cardSelecter configureBy:CardSelectTypePoker];
+    [self.view addSubview:self.cardSelecter];
+}
+
+- (void)hidePokerSelecter {
+    
+    [self.cardSelecter removeFromSuperview];
+}
 
 #pragma mark - STPickerSingle
 

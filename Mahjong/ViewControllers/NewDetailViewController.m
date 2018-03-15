@@ -99,9 +99,9 @@ typedef void(^LexiSuccessBlock)(id respose);
 
 
 // 播放音乐
--(void)playMusic{
+- (void)playMusic {
     
-    NSString *  numberx = [NSString stringWithFormat:@"%d",(arc4random() % 27 + 1)];
+    NSString *numberx = [NSString stringWithFormat:@"%d",(arc4random() % 27 + 1)];
     self.thePlayer =  [[AVAudioPlayer alloc] initWithContentsOfURL:[self getMusicURLWith:numberx] error:nil];
     [self.thePlayer prepareToPlay];
     

@@ -11,7 +11,8 @@
 
 
 typedef void(^PickBlock)();
-typedef void(^SwitchBlock)(BOOL);
+typedef void(^SwitchBlock)(BOOL, NSUInteger);
+
 
 
 @interface GeneralCell : UITableViewCell
@@ -34,7 +35,7 @@ typedef void(^SwitchBlock)(BOOL);
 @property(nonatomic, strong) NSString *title;
 @property(nonatomic, strong) NSArray <NSString *> *pickData;
 @property(nonatomic, assign) BOOL isOn;
-@property(nonatomic, assign) NSInteger index;
+@property(nonatomic, assign) NSUInteger index;
 
 
 @end

@@ -254,6 +254,8 @@ static CGFloat generalCellHeight = 40.0f;
     switch (self.type) {
         case GeneralCellTypeSwitch:
         case GeneralCellTypeSwitchAndPicker:
+        case GeneralCellTypePokerSelect:
+        case GeneralCellTypeMahjongSelect:
             [self.switcher setOn:isOn];
             break;
         default:
@@ -267,7 +269,7 @@ static CGFloat generalCellHeight = 40.0f;
 }
 
 - (void)onSwitch {
-    self.switchBlock(self.switcher.isOn);
+    self.switchBlock(self.switcher.isOn, self.index);
 }
 
 @end
