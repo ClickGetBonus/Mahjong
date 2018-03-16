@@ -11,7 +11,7 @@
 
 
 typedef enum : NSUInteger {
-    GeneralCellTypeTextField,         //文本
+    GeneralCellTypeTextField = 1,         //文本
     GeneralCellTypeSwitch,            //开关
     GeneralCellTypeSinglePicker,      //单选列表
     GeneralCellTypeSwitchAndPicker,   //开关+单选列表

@@ -39,16 +39,41 @@
         return;
     }
     
+    _isSelected = isSelected;
+    [self changeFace];
+}
+
+
+- (void)flipCard {
     
-    if (isSelected) {
+    _isSelected = !_isSelected;
+    
+    // 延时方法 正在翻转的牌翻转一半的时候把它移到视图最上面来
+//    [self performSelector:@selector(changeFace) afterDelay:1.2 / 2];
+    [self performSelector:@selector(changeFace) withObject:nil afterDelay:FlipCardIntercal/2];
+    // 翻转动画
+    UIViewAnimationOptions option = UIViewAnimationOptionTransitionFlipFromLeft;
+    [UIView transitionWithView:self.imageView
+                      duration:FlipCardIntercal
+                       options:option
+                    animations:^ {
+                        
+                    }
+                    completion:^(BOOL finished){
+                        
+                    }];
+}
+
+- (void)changeFace {
+    
+    
+    if (_isSelected) {
         
         [self.imageView setImage:[self selectedImageBy:_card.type]];
     } else {
         [self.imageView setImage:[self cardImageBy:_card]];
     }
-    _isSelected = isSelected;
 }
-
                      
 #pragma mark - Getter
 - (NSInteger)maxnumBy:(CardType)type {

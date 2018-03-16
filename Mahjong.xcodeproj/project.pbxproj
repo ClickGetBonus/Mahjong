@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3ADD9E94C440727B6E324ED4 /* libPods-MahjongUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E54AB4533E98BBAF840B6BB /* libPods-MahjongUITests.a */; };
 		3F3AD7EC2051785D00D90832 /* MANetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7EB2051785D00D90832 /* MANetManager.m */; };
 		3F3AD7F0205178A100D90832 /* MAGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7EF205178A100D90832 /* MAGame.m */; };
 		3F3AD7F420517AD200D90832 /* GetGamesResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3AD7F320517AD200D90832 /* GetGamesResponse.m */; };
@@ -51,7 +52,12 @@
 		3F639490205AB4D700483009 /* CardSelecterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F63948E205AB4D700483009 /* CardSelecterCell.m */; };
 		3F639491205AB4D700483009 /* CardSelecterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F63948F205AB4D700483009 /* CardSelecterCell.xib */; };
 		3F639497205ACCDB00483009 /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F639496205ACCDB00483009 /* Card.m */; };
-		41AC794721CDE80BC087846A /* libPods-Mahjong.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B0B15974810A0BEDF8FA82 /* libPods-Mahjong.a */; };
+		3F93B07C205BD3850059CF35 /* CardSelectButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B07A205BD3850059CF35 /* CardSelectButtonCell.m */; };
+		3F93B07D205BD3850059CF35 /* CardSelectButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B07B205BD3850059CF35 /* CardSelectButtonCell.xib */; };
+		3F93B081205C06B80059CF35 /* CardSelecterHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F93B07F205C06B80059CF35 /* CardSelecterHeader.m */; };
+		3F93B082205C06B90059CF35 /* CardSelecterHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F93B080205C06B80059CF35 /* CardSelecterHeader.xib */; };
+		430F72FF6F13FC9400F5CDF1 /* libPods-Mahjong.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6C3EE291B8AD6D50D5BA11A /* libPods-Mahjong.a */; };
+		6B00150C6DE4C88B3D91BF4D /* libPods-MahjongTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 330F117869DABC801EE5328A /* libPods-MahjongTests.a */; };
 		8404CD1D1EA8F59700D6093D /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8404CD041EA8F59700D6093D /* LICENSE.txt */; };
 		8404CD1E1EA8F59700D6093D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8404CD051EA8F59700D6093D /* README.md */; };
 		8404CD1F1EA8F59700D6093D /* SVIndefiniteAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8404CD081EA8F59700D6093D /* SVIndefiniteAnimatedView.m */; };
@@ -120,8 +126,6 @@
 		84BCE2151EACE8C400B4FB0A /* ZhaJinHuaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BCE2131EACE8C400B4FB0A /* ZhaJinHuaViewController.xib */; };
 		84BCE2191EACEC8A00B4FB0A /* CustomYouXiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84BCE2171EACEC8A00B4FB0A /* CustomYouXiViewController.m */; };
 		84BCE21A1EACEC8A00B4FB0A /* CustomYouXiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84BCE2181EACEC8A00B4FB0A /* CustomYouXiViewController.xib */; };
-		B55B08931EDF64E050B1B4E4 /* libPods-MahjongUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A44FE27020EC57A41C657F /* libPods-MahjongUITests.a */; };
-		C8F69DB652559F102946092D /* libPods-MahjongTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 38D82B7D0DF920AA4E979CB6 /* libPods-MahjongTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -142,10 +146,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07A44FE27020EC57A41C657F /* libPods-MahjongUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MahjongUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		232F3733526DD40A9D07B029 /* Pods-Mahjong.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mahjong.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Mahjong/Pods-Mahjong.debug.xcconfig"; sourceTree = "<group>"; };
+		330F117869DABC801EE5328A /* libPods-MahjongTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MahjongTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33B26222D742A9E4EB65C873 /* Pods-MahjongUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongUITests/Pods-MahjongUITests.release.xcconfig"; sourceTree = "<group>"; };
-		38D82B7D0DF920AA4E979CB6 /* libPods-MahjongTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MahjongTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E54AB4533E98BBAF840B6BB /* libPods-MahjongUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MahjongUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3AD7EA2051785D00D90832 /* MANetManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MANetManager.h; sourceTree = "<group>"; };
 		3F3AD7EB2051785D00D90832 /* MANetManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MANetManager.m; sourceTree = "<group>"; };
 		3F3AD7EE205178A100D90832 /* MAGame.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAGame.h; sourceTree = "<group>"; };
@@ -169,6 +173,12 @@
 		3F63948F205AB4D700483009 /* CardSelecterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelecterCell.xib; sourceTree = "<group>"; };
 		3F639495205ACCDB00483009 /* Card.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		3F639496205ACCDB00483009 /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		3F93B079205BD3850059CF35 /* CardSelectButtonCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardSelectButtonCell.h; sourceTree = "<group>"; };
+		3F93B07A205BD3850059CF35 /* CardSelectButtonCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardSelectButtonCell.m; sourceTree = "<group>"; };
+		3F93B07B205BD3850059CF35 /* CardSelectButtonCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelectButtonCell.xib; sourceTree = "<group>"; };
+		3F93B07E205C06B80059CF35 /* CardSelecterHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CardSelecterHeader.h; sourceTree = "<group>"; };
+		3F93B07F205C06B80059CF35 /* CardSelecterHeader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CardSelecterHeader.m; sourceTree = "<group>"; };
+		3F93B080205C06B80059CF35 /* CardSelecterHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardSelecterHeader.xib; sourceTree = "<group>"; };
 		3FF3A7F1204D95F30025F861 /* 1.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 1.MP3; sourceTree = "<group>"; };
 		3FF3A7F2204D95F30025F861 /* 10.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 10.MP3; sourceTree = "<group>"; };
 		3FF3A7F3204D95F30025F861 /* 11.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 11.MP3; sourceTree = "<group>"; };
@@ -200,7 +210,6 @@
 		3FF3A80F204D95F30025F861 /* 雀神99.0增强版功能开启成功.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "雀神99.0增强版功能开启成功.MP3"; sourceTree = "<group>"; };
 		3FF3A810204D95F30025F861 /* 雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!.MP3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "雀神99.0增强版授权成功,渗透数据成功,修改后台数据完成,请切换至游戏!.MP3"; sourceTree = "<group>"; };
 		3FF3A811204D95F30025F861 /* data.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
-		46B0B15974810A0BEDF8FA82 /* libPods-Mahjong.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mahjong.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AAC066BAD21992112E30157 /* Pods-MahjongUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongUITests/Pods-MahjongUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5B29DDEB15ADE3276E4BE2AF /* Pods-MahjongTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongTests/Pods-MahjongTests.debug.xcconfig"; sourceTree = "<group>"; };
 		611D2698204E456A004C8D2C /* MAEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MAEnum.h; sourceTree = "<group>"; };
@@ -318,6 +327,7 @@
 		84BCE2181EACEC8A00B4FB0A /* CustomYouXiViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomYouXiViewController.xib; sourceTree = "<group>"; };
 		B2F59361A429664111913C33 /* Pods-Mahjong.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mahjong.release.xcconfig"; path = "Pods/Target Support Files/Pods-Mahjong/Pods-Mahjong.release.xcconfig"; sourceTree = "<group>"; };
 		F2BCB74CA0C2829DDE7FFE2B /* Pods-MahjongTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjongTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MahjongTests/Pods-MahjongTests.release.xcconfig"; sourceTree = "<group>"; };
+		F6C3EE291B8AD6D50D5BA11A /* libPods-Mahjong.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Mahjong.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -325,7 +335,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				41AC794721CDE80BC087846A /* libPods-Mahjong.a in Frameworks */,
+				430F72FF6F13FC9400F5CDF1 /* libPods-Mahjong.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,7 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8F69DB652559F102946092D /* libPods-MahjongTests.a in Frameworks */,
+				6B00150C6DE4C88B3D91BF4D /* libPods-MahjongTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +351,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B55B08931EDF64E050B1B4E4 /* libPods-MahjongUITests.a in Frameworks */,
+				3ADD9E94C440727B6E324ED4 /* libPods-MahjongUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,9 +446,15 @@
 			children = (
 				3F639489205AB04500483009 /* CardSelecter.h */,
 				3F63948A205AB04500483009 /* CardSelecter.m */,
+				3F93B07E205C06B80059CF35 /* CardSelecterHeader.h */,
+				3F93B07F205C06B80059CF35 /* CardSelecterHeader.m */,
+				3F93B080205C06B80059CF35 /* CardSelecterHeader.xib */,
 				3F63948D205AB4D700483009 /* CardSelecterCell.h */,
 				3F63948E205AB4D700483009 /* CardSelecterCell.m */,
 				3F63948F205AB4D700483009 /* CardSelecterCell.xib */,
+				3F93B079205BD3850059CF35 /* CardSelectButtonCell.h */,
+				3F93B07A205BD3850059CF35 /* CardSelectButtonCell.m */,
+				3F93B07B205BD3850059CF35 /* CardSelectButtonCell.xib */,
 			);
 			path = CardSelecter;
 			sourceTree = "<group>";
@@ -524,9 +540,9 @@
 		48D36E579C050BB2CB0D1D41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				46B0B15974810A0BEDF8FA82 /* libPods-Mahjong.a */,
-				38D82B7D0DF920AA4E979CB6 /* libPods-MahjongTests.a */,
-				07A44FE27020EC57A41C657F /* libPods-MahjongUITests.a */,
+				F6C3EE291B8AD6D50D5BA11A /* libPods-Mahjong.a */,
+				330F117869DABC801EE5328A /* libPods-MahjongTests.a */,
+				3E54AB4533E98BBAF840B6BB /* libPods-MahjongUITests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -915,6 +931,7 @@
 				3F5DDF98204EE60D00B2DB87 /* 16.MP3 in Resources */,
 				3F5DDF99204EE60D00B2DB87 /* 17.MP3 in Resources */,
 				3F5DDF9A204EE60D00B2DB87 /* 18.MP3 in Resources */,
+				3F93B07D205BD3850059CF35 /* CardSelectButtonCell.xib in Resources */,
 				3F5DDF9B204EE60D00B2DB87 /* 19.MP3 in Resources */,
 				3F5DDF9C204EE60D00B2DB87 /* 2.MP3 in Resources */,
 				3F5DDF9D204EE60D00B2DB87 /* 20.MP3 in Resources */,
@@ -945,6 +962,7 @@
 				840745921EAC7594004C4AF1 /* AuthorViewController.xib in Resources */,
 				840745881EAC4966004C4AF1 /* FishingDetailViewController.xib in Resources */,
 				842645B71F5ED58C0069F961 /* DeKeSaSiViewController.xib in Resources */,
+				3F93B082205C06B90059CF35 /* CardSelecterHeader.xib in Resources */,
 				840B44641F6CE7AC00F70C82 /* TuiTongziViewController.xib in Resources */,
 				840B43E11F6CC3F700F70C82 /* PaiJiuShezhiViewController.xib in Resources */,
 				84BCE21A1EACEC8A00B4FB0A /* CustomYouXiViewController.xib in Resources */,
@@ -991,9 +1009,26 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Mahjong/Pods-Mahjong-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
+				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
+				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
+				"${BUILT_PRODUCTS_DIR}/SCLAlertView-Objective-C/SCLAlertView_Objective_C.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YTKKeyValueStore/YTKKeyValueStore.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SCLAlertView_Objective_C.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YTKKeyValueStore.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1140,6 +1175,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				842645AC1F5ED5650069F961 /* LaoHuJiViewController.m in Sources */,
+				3F93B07C205BD3850059CF35 /* CardSelectButtonCell.m in Sources */,
 				3F3AD7EC2051785D00D90832 /* MANetManager.m in Sources */,
 				84908FF11EAB4917004E190D /* NewSecondDetailViewController.m in Sources */,
 				840AF8241EB7611300AB8203 /* DouNiuYouXiViewController.m in Sources */,
@@ -1164,6 +1200,7 @@
 				840AF81F1EB75C7300AB8203 /* YingShanZhangViewController.m in Sources */,
 				3F3AD7F72051828500D90832 /* MAMenu.m in Sources */,
 				84BCE2141EACE8C400B4FB0A /* ZhaJinHuaViewController.m in Sources */,
+				3F93B081205C06B80059CF35 /* CardSelecterHeader.m in Sources */,
 				3F3AD7FA2051828F00D90832 /* GetMenuResponse.m in Sources */,
 				8404CD301EA900AF00D6093D /* STPickerView.m in Sources */,
 				8404CD221EA8F59700D6093D /* SVProgressHUD.m in Sources */,

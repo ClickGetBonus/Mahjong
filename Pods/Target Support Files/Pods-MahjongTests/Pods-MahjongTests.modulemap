@@ -1,0 +1,6 @@
+framework module Pods_MahjongTests {
+  umbrella header "Pods-MahjongTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

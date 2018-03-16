@@ -3,7 +3,7 @@
 
 target 'Mahjong' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
-  # use_frameworks!
+#   use_frameworks!
 
   # Pods for Mahjong
    pod 'AFNetworking', '~> 3.1.0'
@@ -12,6 +12,7 @@ target 'Mahjong' do
    pod 'YTKKeyValueStore'
    pod 'SDWebImage'
    pod 'MJExtension'
+   pod 'SCLAlertView-Objective-C'
    
 target 'MahjongTests' do
     inherit! :search_paths

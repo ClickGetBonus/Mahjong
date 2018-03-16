@@ -92,10 +92,6 @@ STPickerSingleDelegate
     [self requestMenu];
 }
 
--(void)viewDidDisappear:(BOOL)animated{
-    [super viewDidDisappear:animated];
-    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(playMusic) object:nil];
-}
 
 - (void)loadJsonData {
     
@@ -141,19 +137,19 @@ STPickerSingleDelegate
                 cell = [[GeneralCell alloc] initTextFieldTypeWithTitle:menu.name placeholder:@"请输入"];
                 break;
             case GeneralCellTypeSwitch:
+            case GeneralCellTypePokerSelect:
+            case GeneralCellTypeMahjongSelect:
+            case GeneralCellTypeRun:
                 cell = [[GeneralCell alloc] initSwitchWithTitle:menu.name];
                 break;
             case GeneralCellTypeSinglePicker:
-                cell = [[GeneralCell alloc] initSinglePickTypeWithTitle:menu.name pickData:menu.list];
-                break;
-            case GeneralCellTypePokerSelect:
-            case GeneralCellTypeMahjongSelect:
-                cell = [[GeneralCell alloc] initSwitchWithTitle:menu.name];
+                cell = [[GeneralCell alloc] initSinglePickTypeWithTitle:menu.name pickData:menu.list[@"option"]];
                 break;
             default:
-                cell = [[GeneralCell alloc] initSwitchAndPickTypeWithTitle:menu.name pickData:menu.list];
+                cell = [[GeneralCell alloc] initSwitchWithTitle:menu.name];
                 break;
         }
+        
         __weak typeof(self) weakSelf = self;
         __weak GeneralCell *weakCell = cell;
         cell.pickBlock = ^() {
@@ -164,15 +160,36 @@ STPickerSingleDelegate
         cell.switchBlock = ^(BOOL isOn, NSUInteger index) {
             
             MAMenu *menu = self.menus[i];
+            NSInteger selectType = menu.type.integerValue;
             
-            NSInteger type = menu.type.integerValue;
-            if (type == GeneralCellTypePokerSelect) {
+            NSUInteger cardType = 0;
+            if ([@[@(GeneralCellTypePokerSelect),
+                   @(GeneralCellTypeMahjongSelect),
+                   @(GeneralCellTypeRun)] containsObject:@(selectType)]) {
+                
+                switch (selectType) {
+                    case GeneralCellTypePokerSelect:
+                        cardType = CardSelectTypePoker;
+                        break;
+                    case GeneralCellTypeMahjongSelect:
+                        cardType = CardSelectTypeMahjong;
+                        break;
+                    case GeneralCellTypeRun:
+                        cardType = CardSelectTypeBeard;
+                        break;
+                    default:
+                        break;
+                }
+                
                 if (isOn) {
-                    [weakSelf showPokerSelecter];
+                    [weakSelf showCardSelecterWith:cardType
+                                      canSelectNum:[menu.list[@"number"] integerValue]];
                 } else {
-                    [weakSelf hidePokerSelecter];
+                    [weakSelf hideCardSelecter];
                 }
             }
+            
+            
         };
         [self.cells addObject:cell];
     }
@@ -219,17 +236,38 @@ STPickerSingleDelegate
 
 
 #pragma mark - CardSelecter
-- (void)showPokerSelecter {
+- (void)showCardSelecterWith:(CardSelectType)type canSelectNum:(NSInteger)canSelectNum {
+    
+    __weak typeof(self) weakSelf = self;
     if (self.cardSelecter == nil) {
-        self.cardSelecter = [[CardSelecter alloc] initWithFrame:self.view.bounds];
+        self.cardSelecter = [[CardSelecter alloc] initWithFrame:self.navigationController.view.bounds];
+        
+        self.cardSelecter.cancelBlock = ^{
+            [weakSelf hideCardSelecter];
+        };
+        self.cardSelecter.confirmBlock = ^{
+            [weakSelf hideCardSelecter];
+        };
     }
-    [self.cardSelecter configureBy:CardSelectTypePoker];
-    [self.view addSubview:self.cardSelecter];
+    
+    [self.cardSelecter configureBy:type];
+    self.cardSelecter.canSelectNum = canSelectNum;
+    self.cardSelecter.alpha = 0;
+    [self.navigationController.view addSubview:self.cardSelecter];
+    
+    [UIView animateWithDuration:0.6f animations:^{
+        weakSelf.cardSelecter.alpha = 1;
+    }];
 }
 
-- (void)hidePokerSelecter {
+- (void)hideCardSelecter {
     
-    [self.cardSelecter removeFromSuperview];
+    __weak typeof(self) weakSelf = self;
+    [UIView animateWithDuration:0.6f animations:^{
+        weakSelf.cardSelecter.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.cardSelecter removeFromSuperview];
+    }];
 }
 
 #pragma mark - STPickerSingle
